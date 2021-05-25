@@ -32,19 +32,45 @@ A website that allows you to log in, search for recipes based on your preference
 
 
 ## Rough Breakdown of the Task
-User Login/Logout/Create User - Shaquille
-Recipe API call - Mark
-Calendar creation - Mike
-Database setup - Shaquille
-Deployment - Mark
-Calendar page - Mike
-Recipe Search/ Save Recipe Page - Mark
-Home page - Shaquille
-User Login/Create page - Shaquille
-Shopping List page - Mike
+* User Login/Logout/Create User - Shaquille
+* Recipe API call - Mark
+* Calendar creation - Mike
+* Database setup - Shaquille
+* Deployment - Mark
+* Calendar page - Mike
+* Recipe Search/Save Recipe Page - Mark
+* Home page - Shaquille
+* User Login/Create page - Shaquille
+* Shopping List page - Mike
 
 
 ## Schedule of Tasks
+*Major Deadlines*
+* Project Plan/ Deployment - Wednesday, May 26th
+* MVP - Monday, May 31st 
+* Mini-Presentation - Wednesday, June 2nd
+* Final Plan - Wednesday, June 9th
+* Presentation - Wednesday, June 16th
+
+*Components and Feature*
+* Login/Logout - May 31st
+* Homepage - May 31
+* Search page - May 31
+* Calendar page  - May 31
+* Shopping List page - May 31
+* Homepage CRUD - May 31
+* Search CRUD - May 31
+* Calendar CRUD - May 31
+* Shopping List CRUD - June 8th
+* Server - June 8th
+* Database - May 31st
+* External API - June 8th
+* Recipe Model - May 31
+* User Model - May 31
+* Calendar Model - May 31
+* Shopping List Model - June 8th
+* Polish Website - June 15th
+
 
 ## Screenshot of Project Management Board
-![alt text]()
+![alt text](https://user-images.githubusercontent.com/74076318/119427021-e9b2e680-bccf-11eb-8fda-2ab1693bdd00.png)
