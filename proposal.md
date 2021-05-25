@@ -53,10 +53,10 @@ A website that allows you to log in, search for recipes based on your preference
 * Presentation - Wednesday, June 16th
 
 *Components and Feature*
-* Login/Logout - May 31st
+* Login/Logout - May 26
 * Homepage - May 31
-* Search page - May 31
-* Calendar page  - May 31
+* Search page - May 26
+* Calendar page  - May 26
 * Shopping List page - May 31
 * Homepage CRUD - May 31
 * Search CRUD - May 31
