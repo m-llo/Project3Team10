@@ -1,0 +1,53 @@
+
+.cardBody{
+border-radius: 0.2rem;
+box-sizing: border-box;
+margin:2rem;
+padding:0;
+};
+
+.wrapper{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 16rem));
+    gap:2rem;
+    justify-content: center;
+};
+
+.card{
+overflow:hidden;
+box-shadow: 0 2px 20px gray;
+border-radius: 0.2rem;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+cursor:pointer;
+transition: 200ms ease-in;
+
+
+};
+.cardImage{
+overflow:hidden;
+box-shadow: 0 2px 20px gray;
+border-radius: 0.2rem;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+cursor:pointer;
+transition: 200ms ease-in;
+height: 12rem;
+width: 100%;
+object-fit: cover;
+}
+
+.CardTitle{
+padding: 1rem;
+}
+
+.CardButton{
+    padding: 1rem;
+    }
+.card:hover{
+transform: scale(1.02)
+}
+
+
