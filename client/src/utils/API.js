@@ -1,3 +1,4 @@
+
 import axios from "axios";
 
 // The getRecipes method retrieves recipes from the server
@@ -5,6 +6,12 @@ import axios from "axios";
 export default {
   getRecipes: function(query) {
     return axios.get("https://api.edamam.com/search", { params: { q: query, } });
-  }
+  },
+ getCalendar: function(){
+        
+        return axios.get("/api/calendar/:id") 
 };
 console.log()
+
+}
+
