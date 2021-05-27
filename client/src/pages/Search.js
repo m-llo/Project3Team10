@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import API from "../utils/API";
-import { RecipeSearch, RecipeList } from "../components/RecipeSearch";
+import { SearchRecipe, RecipeList } from "../components/SearchRecipe";
 
 
 function Search() {
-    const [recipes, setRecipes] = useState();
+    const [recipes, setRecipes] = useState([]);
     const [recipeSearch, setRecipeSearch] = useState("");
 
     const handleInputChange = event => {
@@ -22,14 +22,13 @@ function Search() {
     <div>
         <h1 className="text-center">Search For Recipes!</h1>
  
-        <form className="search">
+        <form>
             <div className="form-group">
                 <input
                     value={recipeSearch}
                     onChange={handleInputChange}
                     name="RecipeSearch"
                     type="text"
-                    className="form-control"
                     placeholder="Type in a Cuisine Type or Main Ingredient"
                 />
                 <button type="success" onClick={handleFormSubmit} className="input-lg">
@@ -37,22 +36,26 @@ function Search() {
                 </button>
             </div>
         </form>
-        ) : (
-        <RecipeSearch>
-            console.log(recipes)
+        {recipes.length < 1 &&  (
+              <h1 className="text-center">No Recipes to Display</h1>
+        )} 
+
+        {recipes.length > 0 && (<SearchRecipe>
+             {console.log("recipe", recipes)}
             {recipes.map(recipe => {
                 return (
                     <RecipeList
                         key={recipe.title}
                         title= {recipe.title}
-                        url={recipe.url}
+                        href={recipe.href}
                         ingredients={recipe.ingredients}
-                        // thumbnail={recipe.thumbnail}
+                        thumbnail={recipe.thumbnail}
                     />
                 );
             })}
-        </ RecipeSearch>
-      </div>
+        </ SearchRecipe>)}
+   
+    </div>
     );
 }
 export default Search;
