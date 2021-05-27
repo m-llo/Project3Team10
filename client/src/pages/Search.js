@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import API from "../utils/API";
-import { RecipeSearch, RecipeList } from "../components/RecipeSearch";
+import { SearchRecipe, RecipeList } from "../components/SearchRecipe";
 
 
 function Search() {
@@ -22,14 +22,13 @@ function Search() {
     <div>
         <h1 className="text-center">Search For Recipes!</h1>
  
-        <form className="search">
+        <form>
             <div className="form-group">
                 <input
                     value={recipeSearch}
                     onChange={handleInputChange}
                     name="RecipeSearch"
                     type="text"
-                    className="form-control"
                     placeholder="Type in a Cuisine Type or Main Ingredient"
                 />
                 <button type="success" onClick={handleFormSubmit} className="input-lg">
@@ -37,9 +36,10 @@ function Search() {
                 </button>
             </div>
         </form>
+        {!recipes.length ? (
+              <h1 className="text-center">No Recipes to Display</h1>
         ) : (
-        <RecipeSearch>
-            console.log(recipes)
+        <SearchRecipe>
             {recipes.map(recipe => {
                 return (
                     <RecipeList
@@ -47,12 +47,13 @@ function Search() {
                         title= {recipe.title}
                         url={recipe.url}
                         ingredients={recipe.ingredients}
-                        // thumbnail={recipe.thumbnail}
+                        thumbnail={recipe.thumbnail}
                     />
                 );
             })}
-        </ RecipeSearch>
-      </div>
+        </ SearchRecipe>
+        )}
+    </div>
     );
 }
 export default Search;

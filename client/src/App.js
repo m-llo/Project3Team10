@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./components/Header";
-import Search from "./pages/Search";
+import Search from "./Pages/Search";
 
 function App() {
   return (
