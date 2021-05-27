@@ -45,7 +45,7 @@ function Search() {
                     <RecipeList
                         key={recipe.title}
                         title= {recipe.title}
-                        url={recipe.url}
+                        href={recipe.href}
                         ingredients={recipe.ingredients}
                         thumbnail={recipe.thumbnail}
                     />
