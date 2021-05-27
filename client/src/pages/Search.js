@@ -36,12 +36,14 @@ function Search() {
                 </button>
             </div>
         </form>
+
         {recipes.length < 1 &&  (
               <h1 className="text-center">No Recipes to Display</h1>
         )} 
 
         {recipes.length > 0 && (<SearchRecipe>
              {console.log("recipe", recipes)}
+
             {recipes.map(recipe => {
                 return (
                     <RecipeList
@@ -53,8 +55,11 @@ function Search() {
                     />
                 );
             })}
+
+
         </ SearchRecipe>)}
    
+
     </div>
     );
 }
