@@ -4,7 +4,7 @@ import { SearchRecipe, RecipeList } from "../components/SearchRecipe";
 
 
 function Search() {
-    const [recipes, setRecipes] = useState();
+    const [recipes, setRecipes] = useState([]);
     const [recipeSearch, setRecipeSearch] = useState("");
 
     const handleInputChange = event => {
@@ -36,10 +36,14 @@ function Search() {
                 </button>
             </div>
         </form>
-        {!recipes.length ? (
+
+        {recipes.length < 1 &&  (
               <h1 className="text-center">No Recipes to Display</h1>
-        ) : (
-        <SearchRecipe>
+        )} 
+
+        {recipes.length > 0 && (<SearchRecipe>
+             {console.log("recipe", recipes)}
+
             {recipes.map(recipe => {
                 return (
                     <RecipeList
@@ -51,8 +55,11 @@ function Search() {
                     />
                 );
             })}
-        </ SearchRecipe>
-        )}
+
+
+        </ SearchRecipe>)}
+   
+
     </div>
     );
 }
