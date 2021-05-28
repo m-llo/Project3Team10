@@ -8,10 +8,8 @@ export default {
     return axios.get("https://api.edamam.com/search", { params: { q: query, } });
   },
  getCalendar: function(){
-        
         return axios.get("/api/calendar/:id") 
-};
-console.log()
+}
 
 }
 

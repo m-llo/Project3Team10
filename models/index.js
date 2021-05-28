@@ -1,3 +1,4 @@
 module.exports = {
-  Calendar: require("./Calendar")
+  Calendar: require("./Calendar"),
+  Signup: require("./signup")
 };
