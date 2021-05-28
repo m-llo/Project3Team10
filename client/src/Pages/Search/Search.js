@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import API from "../utils/API";
-import { SearchRecipe, RecipeList } from "../components/SearchRecipe";
+import API from "../../utils/API";
+import { RecipeSearch, RecipeList } from "../../components/RecipeSearch";
 
 
 function Search() {
-    const [recipes, setRecipes] = useState([]);
+    const [recipes, setRecipes] = useState();
     const [recipeSearch, setRecipeSearch] = useState("");
 
     const handleInputChange = event => {
@@ -22,7 +22,7 @@ function Search() {
     <div>
         <h1 className="text-center">Search For Recipes!</h1>
  
-        <form>
+        <form className="search">
             <div className="form-group">
                 <input
                     value={recipeSearch}
@@ -36,31 +36,22 @@ function Search() {
                 </button>
             </div>
         </form>
-
-        {recipes.length < 1 &&  (
-              <h1 className="text-center">No Recipes to Display</h1>
-        )} 
-
-        {recipes.length > 0 && (<SearchRecipe>
-             {console.log("recipe", recipes)}
-
+        ) : (
+        <RecipeSearch>
+            console.log(recipes)
             {recipes.map(recipe => {
                 return (
                     <RecipeList
                         key={recipe.title}
                         title= {recipe.title}
-                        href={recipe.href}
+                        url={recipe.url}
                         ingredients={recipe.ingredients}
-                        thumbnail={recipe.thumbnail}
+                        // thumbnail={recipe.thumbnail}
                     />
                 );
             })}
-
-
-        </ SearchRecipe>)}
-   
-
-    </div>
+        </ RecipeSearch>
+      </div>
     );
 }
 export default Search;
