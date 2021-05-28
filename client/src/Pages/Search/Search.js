@@ -38,7 +38,6 @@ function Search() {
                 </button>
             </div>
         </form>
-        ) : (
         <RecipeSearch>
             console.log(recipes)
             {recipes.map(recipe => {
