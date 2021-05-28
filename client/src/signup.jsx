@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import axios from 'axios';
 // import { response } from 'express';
 
-class App extends Component {
+class Signup extends Component {
     constructor(){
         super()
         this.state = {
@@ -94,4 +94,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default Signup;

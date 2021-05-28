@@ -9,7 +9,8 @@ export default {
     return axios.get("/api/recipes", { params: { q: query } });
   },
  getCalendar: function(){
-        
-        return axios.get("/api/calendar/:id");
-  }
-};
+        return axios.get("/api/calendar/:id") 
+}
+
+}
+

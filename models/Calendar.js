@@ -17,9 +17,9 @@ const CalendarSchema = new Schema({
         url: {
           type: String,
         },
-        indredients: {
+        indredients: [{
           type: String,
-        },
+          }],
       }
     ],
     Monday: [
@@ -36,9 +36,9 @@ const CalendarSchema = new Schema({
           url: {
             type: String,
           },
-          indredients: {
+        indredients: [{
             type: String,
-          },
+            }],
         }
       ],
       Tuesday: [
@@ -55,9 +55,9 @@ const CalendarSchema = new Schema({
           url: {
             type: String,
           },
-          indredients: {
+          indredients: [{
             type: String,
-          },
+            }],
         }
       ],
       Wednesday: [
@@ -74,9 +74,9 @@ const CalendarSchema = new Schema({
           url: {
             type: String,
           },
-          indredients: {
+          indredients: [{
             type: String,
-          },
+            }],
         }
       ],
       Thursday: [
@@ -93,9 +93,9 @@ const CalendarSchema = new Schema({
           url: {
             type: String,
           },
-          indredients: {
+          indredients: [{
             type: String,
-          },
+            }],
         }
       ],
       Friday: [
@@ -112,9 +112,9 @@ const CalendarSchema = new Schema({
           url: {
             type: String,
           },
-          indredients: {
+          indredients: [{
             type: String,
-          },
+            }],
         }
       ],
       Saturday: [
@@ -131,9 +131,9 @@ const CalendarSchema = new Schema({
           url: {
             type: String,
           },
-          indredients: {
+          indredients: [{
             type: String,
-          },
+            }],
         }
       ],
   });
