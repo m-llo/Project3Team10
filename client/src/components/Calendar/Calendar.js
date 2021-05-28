@@ -45,15 +45,18 @@ if(!plan){
  };
   
      return (
-     <div className="wrapper">
+     <div className="wrapper px-4">
       
     {/* {calendar.map(day =>< CalendarCard data={day} /> )} */}
     {/* <CalendarCard data={plan} btn={handleBtnClick} /> */}
-    {plan.map(day =>< CalendarCard data={day} btn={handleBtnClick} /> )}
-    <div className="row justity-content-start">
+    <div className="row justity-content-end">
         <div className="col-md-4">
     <CalendarDeleteBtn data={plan} handleBtnClick={handleBtnClick} />
     </div>
+    <div class="card-group">
+    {plan.map(day =>< CalendarCard data={day} btn={handleBtnClick} /> )}
+    </div>
+    
     </div>
     </div>
     

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import API from "../../utils/API";
-import { RecipeSearch, RecipeList } from "../../components/RecipeSearch";
+// import { RecipeSearch, RecipeList } from "../../components/RecipeSearch/index.js";
 
+import RecipeSearch from "../../components/RecipeSearch/RecipeSearch"
+import RecipeList from "../../components/RecipeSearch/RecipeList"
 
 function Search() {
     const [recipes, setRecipes] = useState();

@@ -4,23 +4,21 @@ import { Link } from "react-router-dom";
 // {plan.map(day =>< CalendarCard data={day} btn={handleBtnClick} /> )}
 
 function calendarCard ({data, btn}){
+    console.log(data)
 return (
 
-<div className="card">
-    <div className="cardBody">
-        <h2 className="cardTitle">{data.name}</h2>
-        <img className="cardImage" src={data.thumbnail} />
-        <h2 className="cardTitle">{data.recipeName}</h2>
+<div className="card p-1 m-1">
+<h3 className="cardTitle fs-2 fw-normal">{data.name}</h3>
+<img className="cardImage card-im-top" src={data.thumbnail} />
+    <div className="cardBody card-body">
+     <Link to={data.url} style={{ textDecoration: 'none' }}><h5 className="cardTitle card-title align-content-start fs-2 display-6 "  target="_blank">{data.recipeName}</h5></Link>   
     </div>
-    <div className="row">
-        <div className="col-sm-4">
-   <Link><button className="btn btn-success p-1" to={data.url} name="view">View</button></Link>
-   </div>
-   <div className="col-sm-4">
-    <button className="btn btn-primary p-1" id={data.id} value={data.ingredients} onClick={btn.handleBtnClick} name="add">Add to List</button>
+    <div className="row justify-items-around">
+   <div className="col">
+    <button className="btn btn-outline-warning p-1 .text-wrap"  id={data.id} value={data.ingredients} onClick={btn.handleBtnClick} name="add">Add to List</button>
     </div>
-    <div className="col-sm-4">
-    <button className="btn btn-danger p-1" id={""} onClick={btn.handleBtnClick} name="delete">Delete</button>
+    <div className="col">
+    <button className="btn btn-outline-warning p-1 .text-wrap" id={""} onClick={btn.handleBtnClick} name="delete">Remove from Calendar</button>
     </div>
     </div>
 </div>
