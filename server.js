@@ -22,8 +22,8 @@ if (process.env.NODE_ENV === "production") {
 
 dotenv.config()
 
-// Connect to the Mongo DB
 mongoose.connect(process.env.DATABASE_ACCESS, () =>console.log("Database connected"));
+
 
 // Use apiRoutes
 app.use("/api", apiRoutes);

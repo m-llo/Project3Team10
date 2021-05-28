@@ -29,7 +29,6 @@ function Search() {
                     onChange={handleInputChange}
                     name="RecipeSearch"
                     type="text"
-                    className="form-control"
                     placeholder="Type in a Cuisine Type or Main Ingredient"
                 />
                 <button type="success" onClick={handleFormSubmit} className="input-lg">
