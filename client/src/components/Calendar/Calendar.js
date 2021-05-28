@@ -13,7 +13,8 @@ function Calendar()  {
     const[calendar, setCalendar]= useState([])
 
 //    componentDidMount(() =>{
-//         API.getCalendar(session.user_id).then((res)=>{
+//       const id; 
+//  API.getCalendar(id).then((res)=>{
 //             setCalendar(res)
 //         })
     
@@ -45,20 +46,20 @@ if(!plan){
  };
   
      return (
-     <div className="wrapper px-4">
-      
-    {/* {calendar.map(day =>< CalendarCard data={day} /> )} */}
-    {/* <CalendarCard data={plan} btn={handleBtnClick} /> */}
-    <div className="row justity-content-end">
-        <div className="col-md-4">
-    <CalendarDeleteBtn data={plan} handleBtnClick={handleBtnClick} />
-    </div>
-    <div class="card-group">
-    {plan.map(day =>< CalendarCard data={day} btn={handleBtnClick} /> )}
-    </div>
-    
-    </div>
-    </div>
+         <div className="wrapper px-4">
+             <div className="row justity-content-end">
+                 <div className="col-md-4 display-1">
+                     My Meal Plan
+                 </div>
+                 <div className="col-md-4">
+                     <CalendarDeleteBtn data={plan} handleBtnClick={handleBtnClick} />
+                 </div>
+                 <div class="card-group">
+                     {plan.map(day => < CalendarCard data={day} btn={handleBtnClick} />)}
+                 </div>
+
+             </div>
+         </div>
     
       )  
   
