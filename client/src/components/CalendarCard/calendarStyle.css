@@ -4,6 +4,7 @@ border-radius: 0.2rem;
 box-sizing: border-box;
 margin:2rem;
 padding:0;
+
 };
 
 .wrapper{
@@ -22,6 +23,7 @@ flex-direction: column;
 justify-content: space-between;
 cursor:pointer;
 transition: 200ms ease-in;
+width:24rem
 
 
 };
@@ -49,5 +51,11 @@ padding: 1rem;
 .card:hover{
 transform: scale(1.02)
 }
+a {
+    color: rgb(54, 53, 53);
+  }
+  a:hover {
+     color: rgb(241, 207, 12)
+  }
 
 

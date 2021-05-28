@@ -3,9 +3,19 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const CalendarSchema = new Schema({
-  Sunday: [
+ userId:{
+type: String
+ },
+  plan: [
       {
-        name: {
+        day: "Sunday",
+        recipeName: String,
+        thumbnail: String,
+        url: String,
+        indredients:[String]
+      },
+      {
+        monday: {
           type: String,
         },
         recipeName: {
@@ -17,125 +27,84 @@ const CalendarSchema = new Schema({
         url: {
           type: String,
         },
-        indredients: [{
+        indredients:[String]
+      },
+      {
+        tuesday: {
           type: String,
-          }],
+        },
+        recipeName: {
+          type: String,
+        },
+        thumbnail: {
+          type: String,
+        },
+        url: {
+          type: String,
+        },
+        indredients:[String]
+      },
+      {
+        wednesday: {
+          type: String,
+        },
+        recipeName: {
+          type: String,
+        },
+        thumbnail: {
+          type: String,
+        },
+        url: {
+          type: String,
+        },
+        indredients:[String]
+      },
+      {
+        thursday: {
+          type: String,
+        },
+        recipeName: {
+          type: String,
+        },
+        thumbnail: {
+          type: String,
+        },
+        url: {
+          type: String,
+        },
+        indredients:[String]
+      },
+      {
+        friday: {
+          type: String,
+        },
+        recipeName: {
+          type: String,
+        },
+        thumbnail: {
+          type: String,
+        },
+        url: {
+          type: String,
+        },
+        indredients:[String]
+      },
+      {
+        saturday: {
+          type: String,
+        },
+        recipeName: {
+          type: String,
+        },
+        thumbnail: {
+          type: String,
+        },
+        url: {
+          type: String,
+        },
+        indredients:[String]
       }
-    ],
-    Monday: [
-        {
-          name: {
-            type: String,
-          },
-          recipeName: {
-            type: String,
-          },
-          thumbnail: {
-            type: String,
-          },
-          url: {
-            type: String,
-          },
-        indredients: [{
-            type: String,
-            }],
-        }
-      ],
-      Tuesday: [
-        {
-          name: {
-            type: String,
-          },
-          recipeName: {
-            type: String,
-          },
-          thumbnail: {
-            type: String,
-          },
-          url: {
-            type: String,
-          },
-          indredients: [{
-            type: String,
-            }],
-        }
-      ],
-      Wednesday: [
-        {
-          name: {
-            type: String,
-          },
-          recipeName: {
-            type: String,
-          },
-          thumbnail: {
-            type: String,
-          },
-          url: {
-            type: String,
-          },
-          indredients: [{
-            type: String,
-            }],
-        }
-      ],
-      Thursday: [
-        {
-          name: {
-            type: String,
-          },
-          recipeName: {
-            type: String,
-          },
-         thumbnail: {
-            type: String,
-          },
-          url: {
-            type: String,
-          },
-          indredients: [{
-            type: String,
-            }],
-        }
-      ],
-      Friday: [
-        {
-          name: {
-            type: String,
-          },
-          recipeName: {
-            type: String,
-          },
-          thumbnail: {
-            type: String,
-          },
-          url: {
-            type: String,
-          },
-          indredients: [{
-            type: String,
-            }],
-        }
-      ],
-      Saturday: [
-        {
-          name: {
-            type: String,
-          },
-          recipeName: {
-            type: String,
-          },
-          thumbnail: {
-            type: String,
-          },
-          url: {
-            type: String,
-          },
-          indredients: [{
-            type: String,
-            }],
-        }
-      ],
+    ]
   });
   
   const Calendar = mongoose.model("calendar", CalendarSchema);

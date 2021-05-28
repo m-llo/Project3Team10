@@ -1,8 +1,7 @@
 import React from "react";
 
 const CalendarContext = React.createContext({
-   plan:[
-   { Sunday:
+  plan: [
     {
        name:"Sunday" ,
        recipeName:"Risotto" ,
@@ -10,7 +9,6 @@ const CalendarContext = React.createContext({
        url:"https://www.foodnetwork.com/recipes/giada-de-laurentiis/lemony-shrimp-and-risotto-recipe-2018344" ,
        indredients: ["rice", "cheese", "milk"],
     },
-    Monday:
     {
       name:"Monday" ,
       recipeName:"Ribeye" ,
@@ -18,7 +16,6 @@ const CalendarContext = React.createContext({
       url:"https://www.foodnetwork.com/recipes/rib-eye-steak-recipe-1942582" ,
       indredients: ["steak", "french fries"],
     },
-  Tuesday:
     {
       name:"Tuesday" ,
       recipeName:"Tacos" ,
@@ -26,7 +23,6 @@ const CalendarContext = React.createContext({
       url:"https://www.foodnetwork.com/kitchen/classes/spicy-ground-beef-tacos_439e9361-8051-44ac-8df1-eb9136b8d810" ,
       indredients: ["tortillas", "ground beef", "onions", "cilantro", "salsa"],
     },
-  Wednesday:
     {
       name:"Wednesday" ,
       recipeName:"Pot Pie" ,
@@ -34,7 +30,6 @@ const CalendarContext = React.createContext({
       url:"https://www.foodnetwork.com/recipes/chicken-pot-pie-2145191" ,
       indredients: ["pie crust", "mixed vegatables", "chicken breast", "flour"],
     },
-  Thursday:
     {
       name:"Thursday" ,
       recipeName:"Spaghetti" ,
@@ -42,7 +37,6 @@ const CalendarContext = React.createContext({
       url:"https://www.foodnetwork.com/kitchen/classes/spaghetti-and-meatballs_379bfaf9-0009-4c7e-a7c7-44076b95a24d" ,
       indredients: ["spaghetti noodles", "italian sausage", "spaghetti sauce"],
     },
-  Friday:
     {
       name:"Friday" ,
       recipeName:"Cheeseburgers" ,
@@ -50,15 +44,14 @@ const CalendarContext = React.createContext({
       url:"https://www.foodnetwork.com/recipes/food-network-kitchen/cheesy-cheeseburgers-recipe-2111823" ,
       indredients: ["buns", "angus ground beef patties", "sliced cheese",],
     },
-  Saturday: 
     {
       name:"Saturday" ,
       recipeName:"Chef's Salad" ,
       thumbnail:"https://food.fnr.sndimg.com/content/dam/images/food/fullset/2013/10/7/0/FNK_Chefs-Salad_s4x3.jpg.rend.hgtvcom.826.620.suffix/1383814438332.jpeg" ,
       url:"https://www.foodnetwork.com/recipes/food-network-kitchen/chefs-salad-recipe-2011625" ,
       indredients: ["hard boiled eggs", "chunk ham", "romaine lettuce", "shredded cheese", "grape tomatoes", ],
-    },
-}]
+    }
+   ]
 });
 
 export default CalendarContext;
