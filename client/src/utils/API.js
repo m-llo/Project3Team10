@@ -4,9 +4,9 @@ import axios from "axios";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  getRecipes: function(query) {
+  getRecipesByQuery: function(q) {
 
-    return axios.get("/api/search", { params: { q: query } });
+    return axios.get("/api/recipes/" + q);
   },
  getCalendar: function(id){
         return axios.get("/api/calendar/" + id) 

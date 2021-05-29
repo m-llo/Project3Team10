@@ -24,7 +24,7 @@ dotenv.config()
 
 // mongoose.connect(process.env.DATABASE_ACCESS, () =>console.log("Database connected"));
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/reactrecipe",
+  process.env.MONGODB_URI || "mongodb://localhost/CUKdb",
   { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
 );
 

@@ -8,7 +8,7 @@ type: String
  },
   plan: [
       {
-        day: "Sunday",
+        day: String,
         recipeName: String,
         thumbnail: String,
         url: String,
