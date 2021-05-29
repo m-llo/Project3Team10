@@ -9,101 +9,33 @@ type: String
   plan: [
       {
         day: "Sunday",
-        recipeName: String,
-        thumbnail: String,
-        url: String,
-        indredients:[String]
+        recipe:{type: Schema.Types.ObjectId,ref:"Recipe"}
+
       },
       {
-        monday: {
-          type: String,
-        },
-        recipeName: {
-          type: String,
-        },
-        thumbnail: {
-          type: String,
-        },
-        url: {
-          type: String,
-        },
-        indredients:[String]
+        day: "Monday",
+        recipe:{type: Schema.Types.ObjectId,ref:"Recipe"}
       },
       {
-        tuesday: {
-          type: String,
-        },
-        recipeName: {
-          type: String,
-        },
-        thumbnail: {
-          type: String,
-        },
-        url: {
-          type: String,
-        },
-        indredients:[String]
+        day: "Tuesday",
+        recipe:{type: Schema.Types.ObjectId,ref:"Recipe"}
       },
       {
-        wednesday: {
-          type: String,
-        },
-        recipeName: {
-          type: String,
-        },
-        thumbnail: {
-          type: String,
-        },
-        url: {
-          type: String,
-        },
-        indredients:[String]
+        day: "Wednesday",
+        recipe:{type: Schema.Types.ObjectId,ref:"Recipe"}
       },
       {
-        thursday: {
-          type: String,
-        },
-        recipeName: {
-          type: String,
-        },
-        thumbnail: {
-          type: String,
-        },
-        url: {
-          type: String,
-        },
-        indredients:[String]
+        day: "Thursday",
+        recipe:{type: Schema.Types.ObjectId,ref:"Recipe"}
       },
       {
-        friday: {
-          type: String,
-        },
-        recipeName: {
-          type: String,
-        },
-        thumbnail: {
-          type: String,
-        },
-        url: {
-          type: String,
-        },
-        indredients:[String]
+        day: "Friday",
+        recipe:{type: Schema.Types.ObjectId,ref:"Recipe"}
       },
       {
-        saturday: {
-          type: String,
-        },
-        recipeName: {
-          type: String,
-        },
-        thumbnail: {
-          type: String,
-        },
-        url: {
-          type: String,
-        },
-        indredients:[String]
-      }
+        day: "Saturday",
+        recipe:{type: Schema.Types.ObjectId,ref:"Recipe"}
+      },
     ]
   });
   

@@ -1,7 +1,7 @@
 module.exports = {
   Calendar: require("./Calendar"),
-  Signup: require("./signup"),
-  Recipe: require("./recipe")
+  Signup: require("./Signup"),
+  Recipe: require("./Recipe")
 };
 
 // module.exports = {
