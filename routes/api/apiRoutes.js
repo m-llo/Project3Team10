@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const db = require("../../models");
-const calendarController = require("../../controllers/calendarController");
+// const calendarController = require("../../controllers/calendarController");
 
-router.get("/recipes", (req, res) => {
+router.get("/search", (req, res) => {
 
   db.Recipe.find({
     title: { $regex: new RegExp(req.query.q, 'i')}
@@ -11,15 +11,15 @@ router.get("/recipes", (req, res) => {
     .catch(err => res.status(422).end());
 });
 
-router
-.route("/calendar/:id")
-.get(calendarController.findById)
-.post(calendarController.update)
-.delete(calendarController.remove);
+// router
+// .route("/calendar/:id")
+// .get(calendarController.findById)
+// .post(calendarController.update)
+// .delete(calendarController.remove);
 
-router
-  .route("/calendar")
-  .post(calendarController.create);
+// router
+//   .route("/calendar")
+//   .post(calendarController.create);
 
 
 module.exports = router;

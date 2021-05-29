@@ -1,6 +1,6 @@
 module.exports = {
-  Calendar: require("./Calendar"),
-  Signup: require("./signup"),
+  // Calendar: require("./Calendar"),
+  // Signup: require("./signup"),
   Recipe: require("./recipe")
 };
 

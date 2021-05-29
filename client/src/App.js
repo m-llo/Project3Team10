@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Search from "./Pages/Search/Search";
 import Home from "./Pages/Homepage/HomepageContainer"
 import Signup from "./signup"
-
+import List from "./Pages/ShoppingList/List"
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/search" component={Search} />
         <Route exact path="/app/signup" component={Signup} />
+        <Route exact path="/list" component={List} />
       </div>
     </Router>
 
