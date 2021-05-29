@@ -18,7 +18,7 @@ function Search() {
 
     const handleFormSubmit = event => {
         event.preventDefault();
-        API.getRecipes(recipeSearch)
+        API.getRecipesByQuery(recipeSearch)
             .then(res => setRecipes(res.data))
             .catch(err => console.log(err));
   }; console.log("recipes", recipeSearch)
@@ -56,9 +56,9 @@ function Search() {
             {recipes.map(recipe => {
                 return (
                     <RecipeList
-                        key={recipe.title}
-                        title= {recipe.title}
-                        href={recipe.href}
+                        key={recipe.label}
+                        lable= {recipe.label}
+                        url={recipe.url}
                         ingredients={recipe.ingredients}
                         thumbnail={recipe.thumbnail}
                     />

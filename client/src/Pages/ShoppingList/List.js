@@ -4,7 +4,7 @@ import Hero from "../../components/Hero/index"
 import { Link, useLocation } from "react-router-dom";
 
 export function ShoppingList({
-    title,
+    label,
     ingredients
 
 }) {
@@ -23,7 +23,7 @@ const location = useLocation();
     
               
         <div className="col-xs-8 sm-9">
-              <h3>{title}</h3>
+              <h3>{label}</h3>
               <p>{ingredients}</p>
              
          </div> 

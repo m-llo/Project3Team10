@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const recipeSchema = new mongoose.Schema({
-  title: {
+const recipeSchema = new Schema({
+  label: {
     type: String,
     required: true
   },
@@ -12,7 +12,7 @@ const recipeSchema = new mongoose.Schema({
     default: ""
   },
 
-  href: {
+  url: {
     type: String,
     default: "",
     unique: true
