@@ -7,8 +7,15 @@ const APIKEY = "&app_id=40e21d0a&app_key=d32282d44a926244791002337e579dc9&count=
 
 // The getRecipes method retrieves recipes from the server
 // It accepts a "query" or term to search the recipe api for
+
+
+// // q = query
+//   getRecipesByQuery: function(id, q) {
+//     return axios.get("/api/recipes/" + id,{q})
+
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
-// from external api
+  // from external api
     searchRecipes: function(query){
     return axios.get(BASEURL + query + APIKEY)
 
@@ -17,9 +24,9 @@ export default {
 getRecipesByUser: function(id) {
     return axios.get("/api/recipes/" + id);
   },
-// q = query
-  getRecipesByQuery: function(id, q) {
-    return axios.get("/api/recipes/" + id,{q});
+  getRecipesByQuery: function(q) {
+
+    return axios.get("/api/recipes/" + q);
   },
  getCalendar: function(id){
         return axios.get("/api/calendar/" + id) 
@@ -32,4 +39,3 @@ getRecipesByUser: function(id) {
   }
 
 }
-

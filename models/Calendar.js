@@ -10,7 +10,6 @@ type: String
       {
         day: "Sunday",
         recipe:{type: Schema.Types.ObjectId,ref:"Recipe"}
-
       },
       {
         day: "Monday",

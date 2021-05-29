@@ -65,7 +65,7 @@ if(!plan){
                  <div className="col-md-4">
                      <CalendarDeleteBtn data={plan} handleBtnClick={handleBtnClick} />
                  </div>
-                 <div class="card-group">
+                 <div className="card-group">
                      {plan.map(day => < CalendarCard data={day} btn={handleBtnClick} />)}
                  </div>
 

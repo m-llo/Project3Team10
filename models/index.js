@@ -4,6 +4,3 @@ module.exports = {
   Recipe: require("./Recipe")
 };
 
-// module.exports = {
-//   Recipe: require("./recipe")
-// };

@@ -2,18 +2,18 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const dotenv = require('dotenv');
-const routesUrls = require('./routes/routes');
-const cors = require('cors');
+// const routesUrls = require('./routes/routes');
+// const cors = require('cors');
 
-// const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
 const app = express();
-const apiRoutes = require("./routes/routes.js");
+const apiRoutes = require("./routes/api/apiRoutes");
 
 // Define middleware here
 app.use(express.json());
-app.use(cors());
-app.use('/app', routesUrls);
-// app.use(express.urlencoded({ extended: true }));
+// app.use(cors());
+// app.use('/app', routesUrls);
+app.use(express.urlencoded({ extended: true }));
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -22,8 +22,11 @@ if (process.env.NODE_ENV === "production") {
 
 dotenv.config()
 
-mongoose.connect(process.env.DATABASE_ACCESS, () =>console.log("Database connected"));
-
+// mongoose.connect(process.env.DATABASE_ACCESS, () =>console.log("Database connected"));
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/CUKdb",
+  { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
+);
 
 // Use apiRoutes
 app.use("/api", apiRoutes);
@@ -34,4 +37,6 @@ app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-app.listen(4000, () => console.log("server is up and running"))
+app.listen(PORT, function() {
+  console.log(`🌎 ==> API server now on port ${PORT}!`);
+});
