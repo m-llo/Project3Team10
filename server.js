@@ -27,7 +27,7 @@ mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/CUKdb",
   { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
 );
-
+console.log(CUKdb)
 // Use apiRoutes
 app.use("/api", apiRoutes);
 

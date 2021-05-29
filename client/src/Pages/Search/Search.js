@@ -18,9 +18,13 @@ function Search() {
 
     const handleFormSubmit = event => {
         event.preventDefault();
-        API.getRecipesByQuery(recipeSearch)
-            .then(res => setRecipes(res.data))
-            .catch(err => console.log(err));
+        const q = "chicken";
+        API.searchRecipes(q)
+        .then((res) =>{setRecipes(res.data.hits); console.log(recipes);})
+        .catch(err => console.log(err));
+        // API.getRecipesByQuery(recipeSearch)
+        //     .then(res => setRecipes(res.data))
+        //     .catch(err => console.log(err));
   }; console.log("recipes", recipeSearch)
   const location = useLocation();
   return (
@@ -57,7 +61,7 @@ function Search() {
                 return (
                     <RecipeList
                         key={recipe.label}
-                        lable= {recipe.label}
+                        label= {recipe.label}
                         url={recipe.url}
                         ingredients={recipe.ingredients}
                         thumbnail={recipe.thumbnail}

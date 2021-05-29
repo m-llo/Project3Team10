@@ -2,9 +2,9 @@ import React from "react";
 
 export function RecipeList({
     thumbnail,
-    title,
+    label,
     ingredients,
-    href
+    url
   }) {
     return (                       
       <li className="list-group-item">
@@ -12,9 +12,9 @@ export function RecipeList({
               <image src={thumbnail || "https://placehold.it/300x300"} ></image>
         </div>
         <div className="col-xs-8 sm-9">
-              <h3>{title}</h3>
+              <h3>{label}</h3>
               <p>Ingredients: {ingredients}</p>
-              <a rel="noreferrer noopener" target="_blank" href={href}>
+              <a rel="noreferrer noopener" target="_blank" href={url}>
                 Go to recipe!
               </a>
          </div> 
