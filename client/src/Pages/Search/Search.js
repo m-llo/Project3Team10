@@ -18,14 +18,15 @@ function Search() {
 
     const handleFormSubmit = event => {
         event.preventDefault();
-        const q = "chicken";
-        API.searchRecipes(q)
-        .then((res) =>{setRecipes(res.data.hits); console.log(recipes);})
+        // const q = "chicken";
+        console.log(recipeSearch)
+        API.searchRecipes(recipeSearch)
+        .then((res) =>{setRecipes(res.data.hits); console.log(recipes, "this is the get");})
         .catch(err => console.log(err));
         // API.getRecipesByQuery(recipeSearch)
         //     .then(res => setRecipes(res.data))
         //     .catch(err => console.log(err));
-  }; console.log("recipes", recipeSearch)
+  }; console.log("are we getting this", recipeSearch)
   const location = useLocation();
   return (
    
@@ -60,14 +61,16 @@ function Search() {
             {recipes.map(recipe => {
                 return (
                     <RecipeList
-                        key={recipe.label}
-                        label= {recipe.label}
-                        url={recipe.url}
-                        ingredients={recipe.ingredients}
-                        thumbnail={recipe.thumbnail}
+                        key={recipe.recipe.label}
+                        label={recipe.recipe.label}
+                        url={recipe.recipe.url}
+                        // ingredients={recipe.recipe.ingredients}
+                        image={recipe.recipe.image}
                     />
                 );
             })}
+            {/* another map for ingredients */}
+            {/* another return for ingredient list component */}
         </RecipeSearch> 
         )}
       </div>
