@@ -3,26 +3,12 @@ import axios from "axios";
 const BASEURL = "https://api.edamam.com/search?q="
 const APIKEY = "&app_id=40e21d0a&app_key=d32282d44a926244791002337e579dc9&count=10"
 
-
-const BASEURL = "https://api.edamam.com/search?q="
-
-const APIKEY = "&app_id=40e21d0a&app_key=d32282d44a926244791002337e579dc9&count=10"
-
-// The getRecipes method retrieves recipes from the server
-// It accepts a "query" or term to search the recipe api for
-
-
-// // q = query
-//   getRecipesByQuery: function(id, q) {
-//     return axios.get("/api/recipes/" + id,{q})
-
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
 
   searchRecipes: function(q){
     return axios.get(BASEURL + q + APIKEY)
-
-//   get saved recipes from database
+  },
 getRecipesByUser: function(id) {
     return axios.get("/api/recipes/" + id)
   },
