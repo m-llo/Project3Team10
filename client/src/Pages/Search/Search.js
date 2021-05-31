@@ -6,30 +6,31 @@ import Hero from "../../components/Hero/index"
 import { Link, useLocation } from "react-router-dom";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+// import IngredientList from "../../components/IngredientList/index";
+
 
 function Search() {
     const [recipes, setRecipes] = useState([]);
     const [recipeSearch, setRecipeSearch] = useState("");
-
+    
     const handleInputChange = event => {
         const { value } = event.target;
         setRecipeSearch(value);
   };
-
+  
     const handleFormSubmit = event => {
         event.preventDefault();
-        // const q = "chicken";
+
         console.log(recipeSearch)
         API.searchRecipes(recipeSearch)
         .then((res) =>{setRecipes(res.data.hits); console.log(recipes, "this is the get");})
         .catch(err => console.log(err));
-        // API.getRecipesByQuery(recipeSearch)
-        //     .then(res => setRecipes(res.data))
-        //     .catch(err => console.log(err));
-  }; console.log("are we getting this", recipeSearch)
-  const location = useLocation();
+    }; console.log("are we getting this", recipeSearch)
+ 
+ 
+ 
+    const location = useLocation();
   return (
-   
     <div>
         <div className= "col- lg text-center">
           <Link to="/plan" className={location.pathname === "/plan"}><button type="button" className="btn btn-warning btn-lg homebtn m-4">Manage Meal Plan</button></Link>
@@ -64,13 +65,14 @@ function Search() {
                         key={recipe.recipe.label}
                         label={recipe.recipe.label}
                         url={recipe.recipe.url}
-                        // ingredients={recipe.recipe.ingredients}
                         image={recipe.recipe.image}
-                    />
+                        ingredients={recipe.recipe.ingredientLines}>
+                    {/* <IngredientList 
+                        key={recipe.recipe.label} */}
+                    
+                    </RecipeList>
                 );
             })}
-            {/* another map for ingredients */}
-            {/* another return for ingredient list component */}
         </RecipeSearch> 
         )}
       </div>
