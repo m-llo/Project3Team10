@@ -3,7 +3,7 @@ import API from "../../utils/API";
 import Hero from "../../components/Hero/index"
 import { Link, useLocation } from "react-router-dom";
 
-export function ShoppingList({
+function ShoppingList({
     label,
     ingredients
 

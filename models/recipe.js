@@ -7,7 +7,7 @@ const recipeSchema = new Schema({
     required: true
   },
   
-  thumbnail: {
+  image: {
     type: String,
     default: ""
   },
