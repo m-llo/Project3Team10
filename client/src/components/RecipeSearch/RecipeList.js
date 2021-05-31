@@ -1,22 +1,24 @@
 import React from "react";
 import Button from "../../components/Button/index";
-import { useStoreContext } from "../../utils/GlobalState";
-import { ADD_FAVORITE } from "../../utils/actions";
+// import { useStoreContext } from "../../utils/GlobalState";
+// import { ADD_FAVORITE } from "../../utils/actions";
+import API from "../../utils/API";
 
 function RecipeList({
     image,
     label,
     url,
-    ingredients
+    ingredients,
+    handleInputSave
   }) {
-  const [recipes, dispatch] = useStoreContext();
-  const addRecipe = () => {
-    dispatch({
-      type: ADD_FAVORITE,
-      post: recipes.label
-    });
-  };
-  
+ 
+//  const [recipeData, setRecipeData] = useState= {
+//    image: image, 
+//    label: label,
+//    url: url,
+//    ingredients: ingredients
+//  }
+
     return (                       
       <li className="list-group-item">
         <div className="col-sx-4 sm-2">
@@ -28,9 +30,9 @@ function RecipeList({
               <a rel="noreferrer noopener" target="_blank" href={url}>
                 Go to recipe!
               </a>
-              <Button type="success" onClick={addRecipe} className="input-sm">
+              <button type="success" image= {image} ingredients={ingredients} url={url} label={label} onClick={(e) => handleInputSave(e)} className="input-sm">
                     ❤️ Add to Favorites
-              </Button> 
+              </button> 
          </div> 
       </li>
     );

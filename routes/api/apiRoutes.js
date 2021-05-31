@@ -9,9 +9,12 @@ router
 .post(recipeController.update)
 .delete(recipeController.remove);
 
+router 
+.route ("/recipes/new")
+.post(recipeController.create);
+
 router
 .route("/recipe?q")
-.post(recipeController.create)
 .get(recipeController.findByQuery);
 
 router

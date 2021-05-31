@@ -27,7 +27,24 @@ function Search() {
         .catch(err => console.log(err));
     }; console.log("are we getting this", recipeSearch)
  
- 
+    const handleInputSave = event => {
+        const image = event.target.getAttribute("image")
+        console.log(image)
+        const label = event.target.getAttribute("label")
+        console.log(label)
+        const ingredients = event.target.getAttribute("ingredients")
+        console.log(ingredients)
+        const url = event.target.getAttribute("url")
+        console.log(url)
+        API.saveRecipes ({
+          label: label,
+          image: image,
+          ingredients: ingredients,
+          url: url
+        })
+        .then(res => console.log("success"))
+        .catch(err => console.log(err))
+      }; 
  
     const location = useLocation();
   return (
@@ -66,10 +83,9 @@ function Search() {
                         label={recipe.recipe.label}
                         url={recipe.recipe.url}
                         image={recipe.recipe.image}
-                        ingredients={recipe.recipe.ingredientLines}>
-                    {/* <IngredientList 
-                        key={recipe.recipe.label} */}
-                    
+                        ingredients={recipe.recipe.ingredientLines}
+                        handleInputSave={handleInputSave}>
+                       
                     </RecipeList>
                 );
             })}
