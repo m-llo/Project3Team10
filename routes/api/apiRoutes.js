@@ -8,7 +8,7 @@ router
 .get(recipeController.findById)
 .post(recipeController.update)
 .delete(recipeController.remove);
-
+s
 router 
 .route ("/recipes/new")
 .post(recipeController.create);
