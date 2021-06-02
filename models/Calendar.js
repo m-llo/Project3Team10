@@ -4,35 +4,35 @@ const Schema = mongoose.Schema;
 
 const CalendarSchema = new Schema({
  userId:{
-type: String
+type: String, ref:"User"
  },
   plan: [
       {
-        day: "Sunday",
+        day: {type: String, default: 'Sunday'},
         recipe:{type: Schema.Types.ObjectId,ref:"Recipe"}
       },
       {
-        day: "Monday",
+        day: {type: String, default: 'Monday'},
         recipe:{type: Schema.Types.ObjectId,ref:"Recipe"}
       },
       {
-        day: "Tuesday",
+        day: {type: String, default: 'Tuesday'},
         recipe:{type: Schema.Types.ObjectId,ref:"Recipe"}
       },
       {
-        day: "Wednesday",
+        day: {type: String, default: 'Wednesday'},
         recipe:{type: Schema.Types.ObjectId,ref:"Recipe"}
       },
       {
-        day: "Thursday",
+        day: {type: String, default: 'Thursday'},
         recipe:{type: Schema.Types.ObjectId,ref:"Recipe"}
       },
       {
-        day: "Friday",
+        day: {type: String, default: 'Friday'},
         recipe:{type: Schema.Types.ObjectId,ref:"Recipe"}
       },
       {
-        day: "Saturday",
+        day: {type: String, default: 'Saturday'},
         recipe:{type: Schema.Types.ObjectId,ref:"Recipe"}
       },
     ]

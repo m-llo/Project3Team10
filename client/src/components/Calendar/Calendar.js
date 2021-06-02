@@ -10,8 +10,8 @@ function Calendar()  {
     const [recipes, setRecipes] = useState([])
 
     useEffect(()=>{
-        const query = "dinner";
-        API.searchRecipes(query)
+        const id = "";
+        API.getSavedPlan(id)
         .then((res) =>{setRecipes(res); console.log("response", recipes); console.log("data", recipes.data); console.log("hits", recipes.data.hits)})
         .catch(err => console.log(err));
 
