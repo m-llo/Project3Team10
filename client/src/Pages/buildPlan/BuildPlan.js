@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from "react";
+import React, {useEffect, useState, useRef } from "react";
 import API from "../../utils/API";
 import { Link, useLocation } from "react-router-dom";
 import Hero from "../../components/Hero/index"
@@ -6,9 +6,12 @@ import PlanCards from "../../components/Plan/Days"
 import SavedRecipes from "../../components/Plan/SavedRecipes"
 
 
+
 function Plan() {
     const location = useLocation();
+    const inputRef = useRef()
     const id = ""
+
  
     const [plan, setPlan] = useState([])
     const [recipes, setRecipes]= useState([])
@@ -24,19 +27,36 @@ function Plan() {
 
     }, [])
  
-    const handleInputSave = event => {
-        
+
+    const saveToPlan = event => {
+        const image = event.target.getAttribute("image")
+        console.log(image)
+        const label = event.target.getAttribute("label")
+        console.log(label)
         const ingredients = event.target.getAttribute("ingredients")
         console.log(ingredients)
-        API.addIngredients ({
-          id: id,
-          ingredients: ingredients,
+        const url = event.target.getAttribute("url")
+        console.log(url)
+        const inputDay = inputRef.current.value
+        const recipeId= event.target.getAttribute("id")
+        const planId = id
+        if(!plan){
+           API.createCalendar({
+            
+
+           })
+        }else{
+            API.updateCalendar ({
+                planId, recipeId, inputDay
+                 
+               })
+               .then(res => console.log("success"))
+               .catch(err => console.log(err))
+        }
         
-        })
-        .then(res => console.log("success"))
-        .catch(err => console.log(err))
       }; 
- 
+    
+
 
 
     return (
@@ -53,7 +73,7 @@ function Plan() {
             <PlanCards data={plan} btn={handleInputSave} />
             </div>
             <div className="col-6">
-            {recipes.map(recipe => <SavedRecipes data={recipe} btn={handleInputSave} />)} 
+            {recipes.map(recipe => <SavedRecipes data={recipe} ref={inputRef}  saveToPlan={saveToPlan} />)} 
             </div>
         </div>
         </div>
