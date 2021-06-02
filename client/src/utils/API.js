@@ -25,7 +25,7 @@ getRecipesByUser: function(id) {
  deleteCalendar: function(id) {
     return axios.delete("/api/calendar/" + id);
   },
-  updateCalendar: function(id){
+  updateCalendar: function(id, recipeId, day){
       return axios.post("/api/calendar" + id)
   },
 

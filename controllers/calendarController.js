@@ -19,7 +19,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    db.Calendar.findOneAndUpdate({ _id: req.params.id }, req.body)
+    db.Calendar.findOneAndUpdate({ _id: req.params.id }, req.params.recipeId)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
