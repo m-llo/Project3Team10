@@ -27,6 +27,11 @@ getRecipesByUser: function(id) {
   },
   updateCalendar: function(id){
       return axios.post("/api/calendar" + id)
+  },
+
+  addingredients: function (id, ingredients){
+    return axios.post("api/list" + id)
+
   }
 
 }
