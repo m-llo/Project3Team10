@@ -11,7 +11,7 @@ function Calendar()  {
 
     useEffect(()=>{
         const id = "";
-        API.getSavedPlan(id)
+        API. getCalendar(id)
         .then((res) =>{setRecipes(res); console.log("response", recipes); console.log("data", recipes.data); console.log("hits", recipes.data.hits)})
         .catch(err => console.log(err));
 
