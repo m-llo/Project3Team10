@@ -70,7 +70,7 @@ function Plan() {
             <Hero />
         <div className="wrapper">
             <div className="col-6">
-            <PlanCards data={plan} btn={handleInputSave} />
+            <PlanCards data={plan} btn={""} />
             </div>
             <div className="col-6">
             {recipes.map(recipe => <SavedRecipes data={recipe} ref={inputRef}  saveToPlan={saveToPlan} />)} 
