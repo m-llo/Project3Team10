@@ -2,14 +2,8 @@ const db = require("../models");
 
 // Defining methods for the CalendarsController
 module.exports = {
-  findAll: function(req, res) {
-    db.Calendar.find(req.query)
-      .sort({ date: -1 })
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
   findById: function(req, res) {
-    db.Calendar.findById(req.params.id)
+    db.Calendar.findByUserId({userId : req.params.id})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -19,12 +13,12 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    db.Calendar.findOneAndUpdate({ _id: req.params.id }, req.params.recipeId)
+    db.Calendar.findOneAndUpdate({ _id: req.params.id, day: req.body.day }, {$push: {recipe: req.body}})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
-    db.Calendar.findById({ _id: req.params.id })
+    db.Calendar.findOneAndDelete({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

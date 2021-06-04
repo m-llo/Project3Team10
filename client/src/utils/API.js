@@ -9,8 +9,8 @@ export default {
   searchRecipes: function(q){
     return axios.get(BASEURL + q + APIKEY)
   },
-  saveRecipes: function (e){
-    return axios.post("/api/recipes/new" + e);
+  saveRecipes: function (recipeData){
+    return axios.post("/api/recipes/new", recipeData);
   },
 getRecipesByUser: function(id) {
     return axios.get("/api/recipes/" + id)
@@ -25,9 +25,22 @@ getRecipesByUser: function(id) {
  deleteCalendar: function(id) {
     return axios.delete("/api/calendar/" + id);
   },
-  updateCalendar: function(id, recipeId, day){
-      return axios.post("/api/calendar" + id)
+clearFromCalendar: function(id, day) {
+    return axios.post("/api/calendar/" + id, {
+      day: day,
+      recipeId:""});
   },
+  updateCalendar: function(id, recipeId, day){
+      return axios.post("/api/calendar" + id, {
+        recipeId: recipeId, 
+        day: day})
+  },
+
+  createCalendar: function(userId){
+    return axios.post("/api/calendar",{
+      userId: userId
+    })
+},
 
   addingredients: function (id, ingredients){
     return axios.post("api/list" + id)
