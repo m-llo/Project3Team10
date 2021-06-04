@@ -9,19 +9,20 @@ import CalendarContext from "../../utils/CalendarContext";
 function Calendar()  {
     const {plan} = useContext(CalendarContext)
     const [recipes, setRecipes] = useState([])
+    // const[plan, setPlan()]=useState([])
 
-    useEffect(()=>{
-        const id = "";
-        const calendar = API.getCalendar(userId)
-        .then((res) => { setPlan(res); console.log("plan", plan) })
-        .catch(err => console.log(err));
+    // useEffect(()=>{
+    //     const id = "";
+    //     const calendar = API.getCalendar(id)
+    //     .then((res) => { setPlan(res); console.log("plan", plan) })
+    //     .catch(err => console.log(err));
 
-    if(!calendar){ 
-            return(
-            <CalendarCreatePrompt />
-            )
-            }
-    }, [])
+    // if(!calendar){ 
+    //         return(
+    //         <CalendarCreatePrompt />
+    //         )
+    //         }
+    // }, [])
    
 
 
@@ -46,7 +47,7 @@ function Calendar()  {
                      My Meal Plan
                  </div>
                  <div className="card-group">
-                     {plan.map(day => < CalendarCard data={day} btn={handleBtnClick} />)}
+                     {plan.map(day => < CalendarCard data={day} btn={""} />)}
                  </div>
                  <div className="align-content-center">
                      <CalendarManagePrompt/>

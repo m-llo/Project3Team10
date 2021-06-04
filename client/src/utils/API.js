@@ -20,7 +20,7 @@ getRecipesByUser: function(id) {
     return axios.get("/api/recipes/" + q);
   },
   getRecipes: function() {
-    return axios.get("/api/recipes/");
+    return axios.get("/api/recipes");
   },
  getCalendar: function(id){
         return axios.get("/api/calendar/" + id) 
