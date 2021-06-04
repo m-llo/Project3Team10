@@ -9,7 +9,7 @@ return (
     <div className="row justify-items-around">
    <div className="col">
     <input placeholder="Day of Week" ref={ref}></input>
-    <button className="btn btn-outline-success p-1 .text-wrap"  id={data.id} label={data.label} url={data.url} image={data.image} ingredients={data.ingredients} onClick={() => saveToPlan()} name="add"></button>
+    <button className="btn btn-outline-success p-1 .text-wrap"  id={data.id} label={data.label} url={data.url} image={data.image} ingredients={data.ingredients} onClick={(event) => saveToPlan(event)} name="add"></button>
     </div>
     <div className="col">
     <button className="btn btn-outline-danger p-1 .text-wrap" id={data.id} onClick={delBtn} name="delete">Remove from Favorites</button>

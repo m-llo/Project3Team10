@@ -8,6 +8,7 @@ const dotenv = require('dotenv');
 const PORT = process.env.PORT || 3001;
 const app = express();
 const apiRoutes = require("./routes/api/apiRoutes");
+const routes = require("./routes")
 
 // Define middleware here
 app.use(express.json());
@@ -29,7 +30,8 @@ mongoose.connect(
 );
 // console.log(CUKdb)
 // Use apiRoutes
-app.use("/api", apiRoutes);
+// app.use("/api", apiRoutes);
+app.use(routes)
 
 // Send every request to the React app
 // Define any API routes before this runs

@@ -13,6 +13,17 @@ router
 .route ("/recipes/new")
 .post(recipeController.create);
 
+router 
+.route ("/recipes")
+.get(recipeController.findAll);
+
+// router.get("/recipes", () =>{
+//  db.Recipe.findAll({})
+// .then(recipes => res.json(recipes))
+// .catch(err => res.status(422).end());
+
+// })
+
 router
 .route("/recipe?q")
 .get(recipeController.findByQuery);
