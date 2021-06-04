@@ -26,7 +26,10 @@ function Plan() {
             .then((res) => { setPlan(res); console.log("plan", plan) })
             .catch(err => console.log(err))
         }
-        API.getRecipesByUser(id)
+        // API.getRecipesByUser(id)
+        // .then((res) => { setRecipes(res); console.log("recipes", recipes) })
+        // .catch(err => console.log(err));
+        API.getRecipes()
         .then((res) => { setRecipes(res); console.log("recipes", recipes) })
         .catch(err => console.log(err));
 

@@ -13,6 +13,10 @@ router
 .route ("/recipes/new")
 .post(recipeController.create);
 
+router 
+.route ("/recipes")
+.get(recipeController.findAll);
+
 router
 .route("/recipe?q")
 .get(recipeController.findByQuery);
