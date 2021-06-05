@@ -1,23 +1,22 @@
 const router = require("express").Router();
 const db = require("../../models");
-const calendarController = require("../../controllers/calendarController");
 const recipeController = require("../../controllers/recipeController");
 
 router
-.route("/recipes/:id")
+.route("/:id")
 .get(recipeController.findById)
 .post(recipeController.update)
 .delete(recipeController.remove);
 
 router 
-.route ("/recipes/new")
+.route ("/new")
 .post(recipeController.create);
 
 router 
-.route ("/recipes")
+.route ("/")
 .get(recipeController.findAll);
 
-// router.get("/recipes", () =>{
+// router.get("/", () =>{
 //  db.Recipe.findAll({})
 // .then(recipes => res.json(recipes))
 // .catch(err => res.status(422).end());
@@ -25,18 +24,10 @@ router
 // })
 
 router
-.route("/recipe?q")
+.route("/?q")
 .get(recipeController.findByQuery);
 
-router
-.route("/calendar/:id")
-.get(calendarController.findById)
-.post(calendarController.update)
-.delete(calendarController.remove);
 
-router
-  .route("/calendar")
-  .post(calendarController.create);
 
 
 module.exports = router;

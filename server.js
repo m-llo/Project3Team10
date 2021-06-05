@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
-const apiRoutes = require("./routes/api/apiRoutes");
+const apiRoutes = require("./routes/api/calendarRoutes");
 const routes = require("./routes")
 
 // Define middleware here

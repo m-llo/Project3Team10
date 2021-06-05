@@ -89,12 +89,20 @@ function Plan() {
             </div>
             <Hero />
             <div className="wrapper">
-                <div className="col-6">
-                    {plan.map(day => <PlanCards data={day} addbtn={""} ref={inputRef} delbtn={clearfromPlan} />)}
-                </div>
-                <div className="col-6">
-                    {recipes.map(recipe => <SavedRecipes data={recipe} ref={inputRef} saveToPlan={saveToPlan} />)}
-                </div>
+               {
+                    plan.length ? (
+                        <div className="col-6">
+                            {plan.map(day => <PlanCards data={day} addbtn={""} ref={inputRef} delbtn={clearfromPlan} />)}
+                        </div>
+                    ) : null
+                }
+                {
+                    recipes.length ? (
+                        <div className="col-6">
+                            {recipes.map(recipe => <SavedRecipes data={recipe} ref={inputRef} saveToPlan={saveToPlan} />)}
+                        </div>
+                    ) : null
+                }
             </div>
         </div>
     )

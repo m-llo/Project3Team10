@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const signUpTemplateCopy = require('../models/signup.js')
+const signUpTemplateCopy = require('../models/User.js')
 const bcrypt = require('bcrypt')
 
 router.post('/signup', async (request, response) =>{
