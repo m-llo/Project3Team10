@@ -12,12 +12,10 @@ const recipeSchema = new Schema({
   
   image: {
     type: String,
-    default: ""
   },
 
   url: {
     type: String,
-    default: "",
     unique: true
   },
 

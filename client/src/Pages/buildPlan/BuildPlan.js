@@ -14,7 +14,7 @@ function Plan() {
 
 
     const [plan, setPlan] = useState([])
-    const [recipes, setRecipes] = useState([])
+    const [recipes, setRecipes] = useState([]) 
 
     useEffect(() => {
        const calendar = API.getCalendar(userId)
@@ -23,14 +23,14 @@ function Plan() {
 
         if (!calendar){
             API.createCalendar(userId)
-            .then((res) => { setPlan(res); console.log("plan", plan) })
+            .then((res) => { console.log("res", res); console.log("res.data", res.data); setPlan(res.data); console.log("plan", plan) })
             .catch(err => console.log(err))
         }
         // API.getRecipesByUser(id)
         // .then((res) => { setRecipes(res); console.log("recipes", recipes) })
         // .catch(err => console.log(err));
         API.getRecipes()
-        .then((res) => { setRecipes(res); console.log("recipes", recipes) })
+        .then((res) => {console.log("res", res); console.log("res.data", res.data); setRecipes(res.data); console.log("recipes", recipes) })
         .catch(err => console.log(err));
 
     }, [])

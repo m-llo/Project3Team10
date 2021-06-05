@@ -19,9 +19,10 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    db.Recipe.create(req.body)
-      .then(dbModel => res.json(recipes))
-      .catch(err => res.status(422).json(err));
+    db.Recipe
+      .create(req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.json(err));
   },
   update: function(req, res) {
     db.Recipe.findOneAndUpdate({ _id: req.params.id }, req.body)
