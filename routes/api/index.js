@@ -1,7 +1,9 @@
 const router = require("express").Router();
-const apiRoutes = require("./apiRoutes");
+const calendarRoutes = require("./calendarRoutes");
+const recipeRoutes = require("./recipeRoutes");
 
 // Post routes
-router.use("/api", apiRoutes);
+router.use("/recipes", recipeRoutes);
+router.use("/calendar", calendarRoutes);
 
 module.exports = router;
