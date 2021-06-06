@@ -5,7 +5,7 @@ import RecipeList from "../../components/RecipeSearch/RecipeList"
 import Hero from "../../components/Hero/index"
 import { Link, useLocation } from "react-router-dom";
 import Input from "../../components/Input";
-import Button from "../../components/Button";
+// import Button from "../../components/Button";
 // import IngredientList from "../../components/IngredientList/index";
 
 
@@ -29,20 +29,20 @@ function Search() {
  
     const handleInputSave = event => {
         const image = event.target.getAttribute("image")
-        console.log(image)
+        // console.log(image)
         const label = event.target.getAttribute("label")
-        console.log(label)
+        // console.log(label)
         const ingredients = event.target.getAttribute("ingredients")
-        console.log(ingredients)
+        // console.log(ingredients)
         const url = event.target.getAttribute("url")
-        console.log(url)
+        // console.log(url)
         API.saveRecipes ({
           label: label,
           image: image,
           ingredients: ingredients,
           url: url
         })
-        .then(res => console.log("success"))
+        .then(res => alert(label + " saved to Favorites"))
         .catch(err => console.log(err))
       }; 
  

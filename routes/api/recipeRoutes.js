@@ -4,7 +4,16 @@ const recipeController = require("../../controllers/recipeController");
 
 router 
 .route ("/new")
-.post(recipeController.create);
+.post(recipeController.create)
+.put(recipeController.update);
+
+// router
+// .route ("/saved")
+// .post(recipeController.create)
+
+router
+.route("/plan/:id")
+.get(recipeController.findAll)
 
 router
 .route("/:id")
