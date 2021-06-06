@@ -5,14 +5,14 @@ import React from "react";
 function savedRecipeList({data, ref , saveToPlan, delBtn}){
 return (
 <div className="p-1 m-1">
-<h6 className="fs-2 fw-normal">{data.label}</h6>
-    <div className="row justify-items-around">
+<h6 className=" fw-normal">{data.label}</h6>
+    <div className="row">
    <div className="col">
-    <input placeholder="Day of Week" ref={ref}></input>
-    <button className="btn btn-outline-success p-1 .text-wrap"  id={data.id} label={data.label} url={data.url} image={data.image} ingredients={data.ingredients} onClick={(event) => saveToPlan(event)} name="add"></button>
+    <input placeholder="Enter a Day of Week" ref={ref}></input>
     </div>
-    <div className="col">
-    <button className="btn btn-outline-danger p-1 .text-wrap" id={data.id} onClick={delBtn} name="delete">Remove from Favorites</button>
+    <div className="">
+    <button className="btn btn-outline-success btn-sm .text-wrap"  id={data.id} label={data.label} url={data.url} image={data.image} ingredients={data.ingredients} onClick={(event) => saveToPlan(event)} name="add">Add to Plan</button>
+    <button className="btn btn-outline-danger  btn-sm" id={data.id} onClick={delBtn} name="delete">Remove</button>
     </div>
     </div>
 </div>

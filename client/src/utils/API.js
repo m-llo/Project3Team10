@@ -9,8 +9,11 @@ export default {
   searchRecipes: function(q){
     return axios.get(BASEURL + q + APIKEY)
   },
-  saveRecipes: function (recipeData){
-    return axios.post("/api/recipes/new", recipeData);
+  saveRecipes: function(recipeData){
+    console.log("recipeData", recipeData)
+    return axios.post("/api/recipes/new", 
+      recipeData
+    );
   },
 getRecipesByUser: function(id) {
     return axios.get("/api/recipes/" + id)
