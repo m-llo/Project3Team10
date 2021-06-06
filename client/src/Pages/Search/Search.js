@@ -5,7 +5,6 @@ import RecipeList from "../../components/RecipeSearch/RecipeList"
 import Hero from "../../components/Hero/index"
 import { Link, useLocation } from "react-router-dom";
 import Input from "../../components/Input";
-// import Button from "../../components/Button";
 // import IngredientList from "../../components/IngredientList/index";
 
 
