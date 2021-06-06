@@ -15,8 +15,12 @@ export default {
       recipeData
     );
   },
-getRecipesByUser: function(id) {
+
+  getRecipesByUser: function(id) {
     return axios.get("/api/recipes/" + id)
+  },
+  deleteRecipe: function(id) {
+    return axios.delete("/api/recipes/" + id)
   },
   getRecipesByQuery: function(q) {
 
