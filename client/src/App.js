@@ -15,7 +15,8 @@ function App() {
 
     <div id="app" className="d-flex flex-column h-100">
       <Header />
-        <Route exact path="/" component={Login} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/search" component={Search} />
         <Route exact path="/list" component={List} />
         <Route exact path="/plan" component={Plan} />
