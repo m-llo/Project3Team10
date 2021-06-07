@@ -5,7 +5,7 @@ import Search from "./Pages/Search/Search";
 import Home from "./Pages/Homepage/HomepageContainer"
 import List from "./Pages/ShoppingList/List"
 import Plan from "./Pages/buildPlan/BuildPlan"
-
+import Login from "./Pages/Login/login"
 
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
 
     <div id="app" className="d-flex flex-column h-100">
       <Header />
+        <Route exact path="/login" component={Login} />
         <Route exact path="/" component={Home} />
         <Route exact path="/search" component={Search} />
         <Route exact path="/list" component={List} />
