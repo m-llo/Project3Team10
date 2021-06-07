@@ -3,11 +3,11 @@ const db = require("../../models");
 const calendarController = require("../../controllers/calendarController");
 
 router
-  .route("/calendar")
+  .route("/")
   .post(calendarController.create);
 
 router
-.route("/calendar/:id")
+.route("/:id")
 .get(calendarController.findById)
 .post(calendarController.update)
 .delete(calendarController.remove);

@@ -48,7 +48,14 @@ clearFromCalendar: function(id, day) {
 
   createCalendar: function(userId){
     return axios.post("/api/calendar",{
-      userId: userId
+      userId: userId,
+      sunday: {recipe: ""},
+      monday: {recipe: ""},
+      tuesday: {recipe: ""},
+      wednesday: {recipe: ""},
+      thursday: {recipe: ""},
+      friday: {recipe: ""},
+      saturday: {recipe: ""},
     })
 },
 
