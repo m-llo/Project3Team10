@@ -25,7 +25,7 @@ dotenv.config()
 
 // mongoose.connect(process.env.DATABASE_ACCESS, () =>console.log("Database connected"));
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/CUKdb",
+   "mongodb://localhost/CUKdb" || process.env.MONGODB_URI, 
   { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
 );
 // console.log(CUKdb)
@@ -35,9 +35,9 @@ app.use(routes)
 
 // Send every request to the React app
 // Define any API routes before this runs
-app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+// app.get("*", function(req, res) {
+//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// });
 
 app.listen(PORT, function() {
   console.log(`🌎 ==> API server now on port ${PORT}!`);

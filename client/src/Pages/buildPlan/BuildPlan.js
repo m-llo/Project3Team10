@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import Hero from "../../components/Hero/index"
 import PlanCards from "../../components/Plan/PlanCards"
 import SavedRecipes from "../../components/Plan/SavedRecipes"
+import StaticPlan from "../../components/Plan/StaticPlan"
 
 
 
@@ -22,6 +23,7 @@ function Plan() {
             .catch(err => console.log(err));
 
         if (!calendar){
+            console.log("building calendar")
             API.createCalendar(userId)
             .then((res) => { console.log("res", res); console.log("res.data", res.data); setPlan(res.data); console.log("plan", plan) })
             .catch(err => console.log(err))
@@ -43,6 +45,20 @@ function Plan() {
         API.clearFromCalendar({
             id: planId,
             day: inputDay
+        })
+            //    then refresh page which calls the calendar again and updates the state
+            .then(res => {
+                console.log(label + "successfully removed");
+                window.location.reload()
+            })
+            .catch(err => console.log(err))
+    }
+
+    function deleteFromFavs (event){
+        const recipeId = event.target.getAttribute("id")
+        const label = event.target.getAttribute("label")
+        API.deleteRecipe({
+            id: recipeId,
         })
             //    then refresh page which calls the calendar again and updates the state
             .then(res => {
@@ -88,18 +104,25 @@ function Plan() {
 
             </div>
             <Hero />
-            <div className="wrapper">
+            <div className="row">
+            <h5 className="col-6 text-center display-6 mb-2">My Plan</h5>
+            <h5 className="col-6 text-center display-6 mb-2">My Recipes</h5>
+            </div>
+            <div className=" row wrapper">
                {
                     plan.length ? (
                         <div className="col-6">
-                            {plan.map(day => <PlanCards data={day} addbtn={""} ref={inputRef} delbtn={clearfromPlan} />)}
+                            {plan.map(day => <PlanCards key={day.name} data={day} addbtn={""} ref={inputRef} delbtn={clearfromPlan} />)}
                         </div>
-                    ) : null
+                    ) : <div className="col-6">
+                          <StaticPlan key={"static"} data={""} addbtn={""}  delbtn={clearfromPlan} />
+                         </div>
                 }
                 {
                     recipes.length ? (
-                        <div className="col-6">
-                            {recipes.map(recipe => <SavedRecipes data={recipe} ref={inputRef} saveToPlan={saveToPlan} />)}
+                        
+                        <div className="col-6 text-center">
+                            {recipes.map(recipe => <SavedRecipes key={recipe.label}data={recipe} ref={inputRef} saveToPlan={saveToPlan} deleteFromFavs={deleteFromFavs} />)}
                         </div>
                     ) : null
                 }
