@@ -1,11 +1,12 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt');
 
-const User = new mongoose.Schema({
-    checkPassword(loginPw) {
-        return bcrypt.compareSync(loginPw, this.password);
-      },
-
+const userSchema = new mongoose.Schema({
+    username: {
+      type: String,
+      unique: false,
+      required: false
+    },
     email:{
        type:String,
        required:true,
@@ -19,13 +20,37 @@ const User = new mongoose.Schema({
         validate: [({ length }) => length >= 6, "Password should be longer."]
     },
 })
-beforeCreate: async (newUserData) => {
-    newUserData.password = await bcrypt.hash(newUserData.password, 10);
-    return newUserData;
-  },
-  beforeUpdate: async (updatedUserData) => {
-    updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-    return updatedUserData;
-  },
 
-module.exports = mongoose.model('User', User, "user")
+userSchema.methods = {
+  checkPassword: function(input){
+    return bcrypt.compareSync(input, this.password)
+  },
+  hashPassword: plainText => {
+    return bcrypt.hashSync(plainText, 10)
+  }
+}
+
+userSchema.pre('save', function (next) {
+  if(!this.password){
+    console.log("no password provided")
+    next()
+  }else{
+    console.log('password provided, hashing password')
+    this.password = this.hashPassword(this.password);
+    next()
+  }
+})
+// userSchema.methods = {
+
+//   beforeCreate: async (newUserData) => {
+//     newUserData.password = await bcrypt.hash(newUserData.password, 10);
+//     return newUserData;
+//   },
+//   beforeUpdate: async (updatedUserData) => {
+//     updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+//     return updatedUserData;
+//   }
+// }
+
+const User = mongoose.model("User", userSchema);
+module.exports = User
