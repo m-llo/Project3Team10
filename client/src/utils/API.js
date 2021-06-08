@@ -10,16 +10,13 @@ export default {
     return axios.post("/api/signup/new", userObj)
   },
 
- logIn: function(email, password){
-  return axios.post("/api/user/login",{email: email,
-  password: password})
+ logIn: function(loginObj){
+  return axios.get("/api/user/login", loginObj)
  },
 
  logOut: function (){
   return axios.post("/api/user/logout")
  },
-
-
 
 // recipe front end routes
   searchRecipes: function(q){
