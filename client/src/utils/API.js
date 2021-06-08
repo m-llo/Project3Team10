@@ -5,9 +5,23 @@ const APIKEY = "&app_id=40e21d0a&app_key=d32282d44a926244791002337e579dc9&count=
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
+//  user signup and login front end routes
   newUser : function(userObj) {
-    return axios.post("/signup/new", userObj)
+    return axios.post("/api/signup/new", userObj)
   },
+
+ logIn: function(email, password){
+  return axios.post("/api/user/login",{email: email,
+  password: password})
+ },
+
+ logOut: function (){
+  return axios.post("/api/user/logout")
+ },
+
+
+
+// recipe front end routes
   searchRecipes: function(q){
     return axios.get(BASEURL + q + APIKEY)
   },
@@ -31,6 +45,9 @@ export default {
   getRecipes: function() {
     return axios.get("/api/recipes");
   },
+
+
+  // plan front end routes
  getCalendar: function(id){
         return axios.get("/api/calendar/" + id) 
 },
@@ -61,6 +78,8 @@ clearFromCalendar: function(id, day) {
     })
 },
 
+
+// shopping list front end routes
   addingredients: function (id, ingredients){
     return axios.post("api/list" + id)
 
