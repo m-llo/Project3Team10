@@ -1,32 +1,52 @@
 import React, {useState} from 'react'
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 import API from '../../utils/API'
 import "./style.css"
 
-function Login(props) {
-  const [userReq, setUserReq] = useState({
-    name: "",
-    email: "",
-    password: ""
-  })
 
-  const handleInput = (event) => {
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  function validateForm() {
+    return email.length > 0 && password.length > 0;
+  }
+
+
+
+
+// function Login(props) {
+//   const [userReq, setUserReq] = useState({
+//     name: "",
+//     email: "",
+//     password: ""
+//   })
+
+  const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(event.target.name)
-    console.log(event.target.value)
+    console.log(event.target.name, "username")
+    setEmail(event.target.name)
+    console.log(event.target.value, "password")
+    setPassword(event.target.value)
 
-    setUserReq({...userReq, [event.target.name]: event.target.value})
   }
 
   const newUser = (event) => {
     event.preventDefault()
     console.log("hello")
-    console.log(userReq)
+   
 
-    API.newUser(userReq).then(res => console.log("sent"))
+ API.newUser ({
+  email: email,
+  password: password,
+})
+.then(res => console.log(" saved to s"))
+.catch(err => console.log(err))
   }
   return (
     <>
-    <div>
+    {/* <div>
       <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
       Sign Up
       </button>
@@ -94,10 +114,32 @@ function Login(props) {
         </div>
         </div>
       </div>
-    
+     */}
+     <div className="Login">
+      <Form onSubmit={handleSubmit}>
+        <Form.Group size="lg" controlId="email">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            autoFocus
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </Form.Group>
+        <Form.Group size="lg" controlId="password">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </Form.Group>
+        <Button onClick= {newUser} type="submit" block size="lg" type="submit" disabled={!validateForm()}>
+          Login
+        </Button>
+      </Form>
+    </div>
 
     </>
   )
 }
-
-export default Login

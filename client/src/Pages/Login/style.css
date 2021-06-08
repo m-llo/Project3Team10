@@ -1,4 +1,4 @@
-.ui_table {
+/* .ui_table {
     padding: 3rem 0;
 }
 
@@ -16,7 +16,7 @@
 
 
 /* Modal CSS */
-.social_log {
+/* .social_log {
     text-align: center;
 }
 .social_log {
@@ -94,4 +94,15 @@
 .signin_dialog .modal-body {
     background-color: #fff;
     padding: 0;
-}
+} */ 
+
+@media all and (min-width: 480px) {
+    .Login {
+      padding: 60px 0;
+    }
+  
+    .Login form {
+      margin: 0 auto;
+      max-width: 320px;
+    }
+  }
