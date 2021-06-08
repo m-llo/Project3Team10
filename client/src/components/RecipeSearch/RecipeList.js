@@ -21,7 +21,7 @@ function RecipeList({
 
     return (                       
       <li className="list-group-item text-center">
-        <div className="col-sx-4 sm-2">
+        <div className="col-xs-4 sm-2">
               <img src={image} alt="recipe" ></img>
         </div>
         <div className="col-xs-8 sm-9">

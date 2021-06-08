@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
-import API from '../../utils/API'
-import "./style.css"
-
+import React, {useState} from 'react';
+import API from '../../utils/API';
+import "./style.css";
+import Logo1 from "../../assets/images/google_plus.png";
+import Logo2 from "../../assets/images/twitter_logo.png"
 function Login(props) {
   const [userReq, setUserReq] = useState({
     name: "",
@@ -27,7 +28,7 @@ function Login(props) {
   return (
     <>
     <div>
-      <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      {/* <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
       Sign Up
       </button>
 
@@ -38,9 +39,9 @@ function Login(props) {
               <img src="./images/cÜk_short.png" alt=""></img>
               <p>Registering to this website, you accept our terms of use and our<a href="#"> privacy policy</a> </p>
             </div>
-            <div className="modal-body signin_modal">
-              <ul className="nav nav-tabs" id="myTab" role="tablist">
-                <li className="nav-item">
+            <div className="modal-body signin_modal"> */}
+              <ul className="nav nav-tabs text-center" id="myTab" role="tablist">
+                <li className="nav-item text-center">
                   <button class="nav-link active" id="home-tab" data-toggle="tab" href= "#signup"  role="tab" 
                   aria-controls="home" aria-selected="true">Sign Up</button>
                 </li>
@@ -49,12 +50,12 @@ function Login(props) {
                   aria-controls="profile" aria-selected="false">Sign In</button>
                 </li>
               </ul>
-              <div className="social_login">
+              <div className="social_login text-center">
                 <p>With your social network</p>
-                <ul className="social_log">
-                  <li><img src="images/facebook_logo.svg" alt=""></img></li>
-                  <li><img src="images/google_plus.png" alt=""></img></li>
-                  <li><img src="images/twitter_logo.png" alt=""></img></li>
+                <ul className="social_log text-center">
+                  <li><img src={Logo1} alt=""></img></li>
+                  <li><img src={Logo2} alt=""></img></li>
+                  {/* <li><img src="images/twitter_logo.png" alt=""></img></li> */}
                 </ul>
                 <p>or</p>
               </div>
@@ -91,9 +92,9 @@ function Login(props) {
                 </div>
               </div>
           </div>
-        </div>
-        </div>
-      </div>
+        {/* </div>
+        // </div>
+      // </div> */}
     
 
     </>
