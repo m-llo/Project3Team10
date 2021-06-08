@@ -29,14 +29,16 @@ if (process.env.NODE_ENV === "production") {
 };
 
 dotenv.config()
-
+mongoose.connect (
+  process.env.MONDGODB_URI || "mongodb://localhost/CUKdb"
+)
 // mongoose.connect(process.env.DATABASE_ACCESS, () =>console.log("Database connected"));
-mongoose.connect(
+// mongoose.connect(
 
-  process.env.MONGODB_URI || "mongodb+srv://cukdb:group10@cluster0.gd2at.mongodb.net/CUKDB?retryWrites=true&w=majority",
+//   process.env.MONGODB_URI || "mongodb+srv://cukdb:group10@cluster0.gd2at.mongodb.net/CUKDB?retryWrites=true&w=majority",
 
-  { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
-);
+//   { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
+// );
 // console.log(CUKdb)
 // Use apiRoutes
 // app.use("/api", apiRoutes);
