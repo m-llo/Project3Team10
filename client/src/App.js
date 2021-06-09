@@ -7,14 +7,17 @@ import List from "./Pages/ShoppingList/List";
 import Plan from "./Pages/buildPlan/BuildPlan";
 import Login from "./Pages/Login/login";
 import Signup from "./Pages/Signup/Signup";
+import About from "./Pages/About/about";
 
 function App() {
   return (
   
   <Router>
-
+        
     <div id="app" className="d-flex flex-column h-100">
+     
       <Header />
+      <Route exact path="/about" component={About} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/" component={Home} />
