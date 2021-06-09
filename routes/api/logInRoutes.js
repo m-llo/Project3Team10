@@ -7,7 +7,7 @@ const User  = require('../../models/User.js');
 // Login
 router.post('/login', async (req, res) => {
   try {
-    const dbUserData = await User.findOne({email: req.body.email});
+    const dbUserData = await User.findOne({email: req.email});
 
     if (!dbUserData) {
       res
