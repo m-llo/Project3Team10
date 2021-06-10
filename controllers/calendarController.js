@@ -3,7 +3,7 @@ const db = require("../models");
 // Defining methods for the CalendarsController
 module.exports = {
   findById: function(req, res) {
-    db.Calendar.findByUserId({userId : req.params.id})
+    db.Calendar.find({userId : req.params.id})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.json(err));
   },
@@ -13,8 +13,7 @@ module.exports = {
       .catch(err => res.json(err));
   },
   update: function(req, res) {
-    const day = req.body.day
-    db.Calendar.findOneAndUpdate({ _id: req.params.id, day: req.body.day }, {$push: {recipe: req.body}})
+    db.Calendar.findOneAndUpdate({ _id: req.params.id}, req.body , {new: true})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.json(err));
   },
