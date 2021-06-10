@@ -25,7 +25,6 @@
   "bugs": {
     "url": "https://github.com/m-llo/Project3Team10/issues"
   },
-  "homepage": "https://github.com/m-llo/Project3Team10",
   "devDependencies": {
     "concurrently": "^6.2.0",
     "nodemon": "^2.0.7"
