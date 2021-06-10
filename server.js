@@ -22,7 +22,7 @@ app.use(express.json());
 // app.use(cors());
 // app.use('/app', routesUrls);
 app.use(express.urlencoded({ extended: true }));
-app.use(session(sess))
+// app.use(session(sess))
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
