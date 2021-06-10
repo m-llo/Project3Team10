@@ -11,7 +11,7 @@
     "client": "cd client && npm run start",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
     "seed": "node scripts/seedDB.js && node scripts/userDB.js",
     "watch": "nodemon server.js"
   },
@@ -41,5 +41,8 @@
     "if-env": "^1.0.4",
     "mongoose": "^5.12.11",
     "react-router-dom": "^5.2.0"
-  }
+  },
+  "engines": {
+    "node": "14.15.5"
+}
 }
