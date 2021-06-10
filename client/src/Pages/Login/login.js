@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+// import Form from "react-bootstrap/Form";
 import API from '../../utils/API'
 import "./style.css"
 import Input from '../../components/Input';
@@ -48,7 +47,7 @@ export default function Login() {
 .catch(err => console.log(err))
   }
   return (
-     <Form className="Login">
+    //  <Form className="Login">
        <div className="form-group-center">
       <Input
         value={email}
@@ -68,6 +67,6 @@ export default function Login() {
           Login
         </button>
      </div>
-    </ Form>
+    // </ Form>
   )
 }

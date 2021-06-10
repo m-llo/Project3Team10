@@ -1,118 +1,28 @@
-import React, { useEffect, useState, useRef } from "react";
+import React from "react";
 import "./calendarStyle.css";
 import { Link } from "react-router-dom";
 
-function PlanCards({ data, addbtn, delbtn, ref }) {
+function PlanCards(props) {
     
     
     // if saved plan exist in database will set the calendar to the recipes state then populate the calendar fields
     return (
         <div>
             <div className="card p-1 m-1">
-                <h3 className="cardTitle fs-2 fw-normal" ref={ref} name={data.day}>{data.day}</h3>
-                <img className="cardImage card-im-top" src={data.recipe.image} alt="finished recipe" />
+                <h3 className="cardTitle fs-2 fw-normal"  name="day">{props.day}</h3>
+                <img className="cardImage card-im-top align-content-center" height="300px" width="350px"src={props.image} alt="finished recipe" />
                 <div className="cardBody card-body">
-                    <Link to={data.recipe.url} style={{ textDecoration: 'none' }}><h5 className="cardTitle card-title align-content-start fs-2 display-6 " target="_blank">{data.recipe.label}</h5></Link>
+                    <Link to={props.url} style={{ textDecoration: 'none' }}><h5 className="cardTitle card-title align-content-start fs-2 display-6 " target="_blank">{props.label}</h5></Link>
                 </div>
                 <div className="row justify-items-around">
                     <div className="col">
-                        <button className="btn btn-outline-warning p-1 .text-wrap" id={data.userId} value={""} onClick={""} name="add">Add to Shopping List</button>
+                        <button className="btn btn-outline-warning p-1 .text-wrap" id={props.userId} value={props.ingredients} onClick={(event)=> props.addbtn(event)} name="add">Add to Shopping List</button>
                     </div>
                     <div className="col">
-                        <button className="btn btn-outline-warning p-1 .text-wrap" id={data.id} label={data.recipe.label} onClick={(event)=> delbtn(event)} name="delete">Remove from Plan</button>
+                        <button className="btn btn-outline-warning p-1 .text-wrap" id={props.id} label={props.label} onClick={(event)=> props.delbtn(event)} name={props.key}>Remove from Plan</button>
                     </div>
                 </div>
             </div>
-            {/* <div className="card p-1 m-1">
-                <h3 className="cardTitle fs-2 fw-normal" name="Monday">Monday</h3>
-                <img className="cardImage card-im-top" src={""} />
-                <div className="cardBody card-body">
-                    <Link to={""} style={{ textDecoration: 'none' }}><h5 className="cardTitle card-title align-content-start fs-2 display-6 " target="_blank"></h5></Link>
-                </div>
-                <div className="row justify-items-around">
-                    <div className="col">
-                        <button className="btn btn-outline-warning p-1 .text-wrap" id={""} value={""} onClick={""} name="add">Add to List</button>
-                    </div>
-                    <div className="col">
-                        <button className="btn btn-outline-warning p-1 .text-wrap" id={""} onClick={""} name="delete">Remove from Plan</button>
-                    </div>
-                </div>
-            </div>
-            <div className="card p-1 m-1">
-                <h3 className="cardTitle fs-2 fw-normal" name="Tuesday">Tuesday</h3>
-                <img className="cardImage card-im-top" src={""} />
-                <div className="cardBody card-body">
-                    <Link to={""} style={{ textDecoration: 'none' }}><h5 className="cardTitle card-title align-content-start fs-2 display-6 " target="_blank"></h5></Link>
-                </div>
-                <div className="row justify-items-around">
-                    <div className="col">
-                        <button className="btn btn-outline-warning p-1 .text-wrap" id={""} value={""} onClick={""} name="add">Add to List</button>
-                    </div>
-                    <div className="col">
-                        <button className="btn btn-outline-warning p-1 .text-wrap" id={""} onClick={""} name="delete">Remove from Plan</button>
-                    </div>
-                </div>
-            </div>
-            <div className="card p-1 m-1">
-                <h3 className="cardTitle fs-2 fw-normal" name="Wednesday">Wednesday</h3>
-                <img className="cardImage card-im-top" src={""} />
-                <div className="cardBody card-body">
-                    <Link to={""} style={{ textDecoration: 'none' }}><h5 className="cardTitle card-title align-content-start fs-2 display-6 " target="_blank"></h5></Link>
-                </div>
-                <div className="row justify-items-around">
-                    <div className="col">
-                        <button className="btn btn-outline-warning p-1 .text-wrap" id={""} value={""} onClick={""} name="add">Add to List</button>
-                    </div>
-                    <div className="col">
-                        <button className="btn btn-outline-warning p-1 .text-wrap" id={""} onClick={""} name="delete">Remove from Plan</button>
-                    </div>
-                </div>
-            </div>
-            <div className="card p-1 m-1">
-                <h3 className="cardTitle fs-2 fw-normal" name="Thursday">Thursday</h3>
-                <img className="cardImage card-im-top" src={""} />
-                <div className="cardBody card-body">
-                    <Link to={""} style={{ textDecoration: 'none' }}><h5 className="cardTitle card-title align-content-start fs-2 display-6 " target="_blank"></h5></Link>
-                </div>
-                <div className="row justify-items-around">
-                    <div className="col">
-                        <button className="btn btn-outline-warning p-1 .text-wrap" id={""} value={""} onClick={""} name="add">Add to List</button>
-                    </div>
-                    <div className="col">
-                        <button className="btn btn-outline-warning p-1 .text-wrap" id={""} onClick={""} name="delete">Remove from Plan</button>
-                    </div>
-                </div>
-            </div>
-            <div className="card p-1 m-1">
-                <h3 className="cardTitle fs-2 fw-normal" name="Friday">Friday</h3>
-                <img className="cardImage card-im-top" src={""} />
-                <div className="cardBody card-body">
-                    <Link to={""} style={{ textDecoration: 'none' }}><h5 className="cardTitle card-title align-content-start fs-2 display-6 " target="_blank"></h5></Link>
-                </div>
-                <div className="row justify-items-around">
-                    <div className="col">
-                        <button className="btn btn-outline-warning p-1 .text-wrap" id={""} value={""} onClick={""} name="add">Add to List</button>
-                    </div>
-                    <div className="col">
-                        <button className="btn btn-outline-warning p-1 .text-wrap" id={""} onClick={""} name="delete">Remove from Plan</button>
-                    </div>
-                </div>
-            </div>
-            <div className="card p-1 m-1">
-                <h3 className="cardTitle fs-2 fw-normal" name="Saturday">Saturday</h3>
-                <img className="cardImage card-im-top" src={""} />
-                <div className="cardBody card-body">
-                    <Link to={""} style={{ textDecoration: 'none' }}><h5 className="cardTitle card-title align-content-start fs-2 display-6 " target="_blank"></h5></Link>
-                </div>
-                <div className="row justify-items-around">
-                    <div className="col">
-                        <button className="btn btn-outline-warning p-1 .text-wrap" id={""} value={""} onClick={""} name="add">Add to List</button>
-                    </div>
-                    <div className="col">
-                        <button className="btn btn-outline-warning p-1 .text-wrap" id={""} onClick={""} name="delete">Remove from Plan</button>
-                    </div>
-                </div>
-            </div> */}
         </div>
     )
 }

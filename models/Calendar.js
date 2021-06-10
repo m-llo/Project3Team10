@@ -2,42 +2,69 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const CalendarSchema = new Schema({
+const CalendarSchema = new Schema(
+  [
+    {
  userId:{
   type: Schema.Types.ObjectId,ref:"User",
   unique: true
- },
-    sunday: {
+ }, 
+      sunday: {
         day: {type: String, default: 'Sunday'},
-        recipe:{type: Schema.Types.ObjectId,ref:"Recipe"}
-             },
+        label: {type: String},
+        url: {type: String},
+        ingredients:[String],
+        image: {type: String}
+                    },
+
      monday: {
-        day: {type: String, default: 'Monday'},
-        recipe:{type: Schema.Types.ObjectId,ref:"Recipe"}
+      day: {type: String, default: 'Monday'},
+      label: {type: String},
+      url: {type: String},
+      ingredients:[String],
+      image: {type: String}
       },
+
       tuesday:{
-        day: {type: String, default: 'Tuesday'},
-        recipe:{type: Schema.Types.ObjectId,ref:"Recipe"}
+      day: {type: String, default: 'Tuesday'},
+      label: {type: String},
+      url: {type: String},
+      ingredients:[String],
+      image: {type: String}
       },
+
       wednesday: {
         day: {type: String, default: 'Wednesday'},
-        recipe:{type: Schema.Types.ObjectId,ref:"Recipe"}
+        label: {type: String},
+      url: {type: String},
+      ingredients:[String],
+      image: {type: String}
       },
+
       thursday: {
         day: {type: String, default: 'Thursday'},
-        recipe:{type: Schema.Types.ObjectId,ref:"Recipe"}
+        label: {type: String},
+        url: {type: String},
+        ingredients:[String],
+        image: {type: String}
       },
       friday: {
         day: {type: String, default: 'Friday'},
-        recipe:{type: Schema.Types.ObjectId,ref:"Recipe"}
+        label: {type: String},
+        url: {type: String},
+        ingredients:[String],
+        image: {type: String}
       },
+
      saturday: {
-        day: {type: String, default: 'Saturday'},
-        recipe:{type: Schema.Types.ObjectId,ref:"Recipe"}
-      },
-    
-    
-  });
+      day: {type: String, default: 'Saturday'},
+      Label: {type: String},
+      url: {type: String},
+      ingredients:[String],
+      image: {type: String}
+      }
+}
+]);
   
   const Calendar = mongoose.model("Calendar", CalendarSchema, "calendar");
   

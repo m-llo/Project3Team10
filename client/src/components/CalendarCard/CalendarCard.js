@@ -3,15 +3,15 @@ import "./calendarStyle.css";
 import { Link } from "react-router-dom";
 // {plan.map(day =>< CalendarCard data={day} btn={handleBtnClick} /> )}
 
-function calendarCard ({data, btn}){
-    console.log(data)
+function calendarCard (props){
+ 
 return (
 
 <div className="card p-1 m-1">
-<h3 className="cardTitle fs-2 fw-normal">{data.day}</h3>
-<img className="cardImage card-im-top" src={data.recipe.thumbnail} />
+<h3 className="cardTitle fs-2 fw-normal">{props.day}</h3>
+<img className="cardImage card-im-top" alt="recipes" src={props.image} />
     <div className="cardBody card-body">
-     <Link to={data.url} style={{ textDecoration: 'none' }}><h5 className="cardTitle card-title align-content-start fs-2 display-6 "  target="_blank">{data.recipe.label}</h5></Link>   
+     <Link to={props.url} style={{ textDecoration: 'none' }}><h5 className="cardTitle card-title align-content-start fs-2 display-6 "  target="_blank">{props.label}</h5></Link>   
     </div>
     <div className="row justify-items-around">
    {/* <div className="col">

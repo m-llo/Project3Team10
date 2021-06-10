@@ -3,7 +3,6 @@ const db = require("../models");
 module.exports = {
   findAll: function(req, res) {
     db.Recipe.find({})
-      // .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.json(err));
   },
@@ -30,7 +29,7 @@ module.exports = {
       .catch(err => res.json(err));
   },
   update: function(req, res) {
-    db.Recipe.findOneAndUpdate({ _id: req.body.id }, req.body)
+    db.Recipe.findOneAndUpdate({ _id: req.body.id },req.body, {new: true})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.json(err));
   },

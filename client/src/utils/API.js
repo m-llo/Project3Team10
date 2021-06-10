@@ -59,22 +59,13 @@ clearFromCalendar: function(id, day) {
       day: day,
       recipeId:""});
   },
-  updateCalendar: function(id, recipeId, day){
-      return axios.post("/api/calendar" + id, {
-        recipeId: recipeId, 
-        day: day})
+  updateCalendar: function(id, calendar){
+      return axios.post("/api/calendar" + id, calendar)
   },
 
   createCalendar: function(userId){
     return axios.post("/api/calendar",{
       userId: userId,
-      sunday: {recipe: ""},
-      monday: {recipe: ""},
-      tuesday: {recipe: ""},
-      wednesday: {recipe: ""},
-      thursday: {recipe: ""},
-      friday: {recipe: ""},
-      saturday: {recipe: ""},
     })
 },
 
