@@ -1,9 +1,8 @@
 import React, {useState} from 'react'
 import Form from "react-bootstrap/Form";
-// import Button from "react-bootstrap/Button";
 import API from '../../utils/API';
 import Input from '../../components/Input';
-// import { Redirect } from "react-router-dom";
+import Hero from '../../components/Hero';
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -28,16 +27,19 @@ export default function Signup() {
     const email = event.target.getAttribute("email")
     const password = event.target.getAttribute("password")
 
- API.newUser ({
-  email: email,
-  password: password,
-})
-.then(res => {
+  API.newUser ({
+    email: email,
+    password: password,
+  })
+  .then(res => {
     document.location.replace('/')
-})
-.catch(err => console.log(err))
+  })
+  .catch(err => console.log(err))
   }
   return (
+  <div>
+    <Hero />
+      <div className="container">
      <Form className="Login">
        <div className="form-group-center">
       <Input
@@ -54,10 +56,12 @@ export default function Signup() {
         onChange={handlePasswordInput}
         placeholder="Type in your Password"
       />
-      <button className="btn-sm btn-success" email={email} password={password} onClick={(e) => newUser(e)} type="submit" block size="lg" disabled={!validateForm()}>
+      <button className="btn btn-warning" email={email} password={password} onClick={(e) => newUser(e)} type="submit" block size="lg" disabled={!validateForm()}>
           Login
         </button>
      </div>
     </ Form>
-  )
+  </div>
+  </div>
+)
 }

@@ -12,7 +12,4 @@ router
 .post(calendarController.update)
 .delete(calendarController.remove);
 
-
-
-
 module.exports = router;

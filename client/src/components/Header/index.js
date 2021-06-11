@@ -11,23 +11,20 @@ const logout = () => {
 function Header() {
     return (
     <div>
-       <nav className="navbar navbar-light bg-white">
+        <nav className="navbar navbar-light bg-white">
             <div className="container">
                 <a className="navbar-brand" href="/home">
                    <img src={Logo} alt="logo" width="150px" height="80px"/>
-                  </a>
-           </div>
-           <div>
-           <div className="navbar-brand">
+                </a>
+            </div>
+            <div className="navbar-brand">
                <button type="submit" className="btn-warning text-center" onClick={login}>Log In</button>
-           </div>
-           <div className="navbar-brand">
-          <button type="submit" className="btn-warning text-center " onClick={logout}>Log Out</button>
-        </div>
-      </div>
-      </nav>
-
-</div>
+            </div>
+            <div className="navbar-brand">
+               <button type="submit" className="btn-warning text-center " onClick={logout}>Log Out</button>
+            </div>
+        </nav>
+    </div>
     );
 }
 export default Header;
