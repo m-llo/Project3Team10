@@ -10,8 +10,8 @@
     "start:dev": "concurrently \" npm run watch\" \"cd client && npm start\"",
     "client": "cd client && npm run start",
     "install": "cd client && npm install",
-    "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build",
+    "build": "cd client && npm run build && grunt dist",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
     "seed": "node scripts/seedDB.js && node scripts/userDB.js",
     "watch": "nodemon server.js"
   },
@@ -25,7 +25,6 @@
   "bugs": {
     "url": "https://github.com/m-llo/Project3Team10/issues"
   },
-  "homepage": "https://github.com/m-llo/Project3Team10",
   "devDependencies": {
     "concurrently": "^6.2.0",
     "nodemon": "^2.0.7"
@@ -40,6 +39,11 @@
     "express-session": "^1.17.2",
     "if-env": "^1.0.4",
     "mongoose": "^5.12.11",
-    "react-router-dom": "^5.2.0"
-  }
+    "react-router-dom": "^5.2.0",
+    "bower":"^1.8.0",
+    "grunt":"^1.0.1"
+  },
+  "engines": {
+    "node": "14.15.5"
+}
 }

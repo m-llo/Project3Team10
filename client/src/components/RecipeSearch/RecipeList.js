@@ -2,7 +2,7 @@ import React from "react";
 // import Button from "../../components/Button/index";
 // import { useStoreContext } from "../../utils/GlobalState";
 // import { ADD_FAVORITE } from "../../utils/actions";
-import API from "../../utils/API";
+
 
 function RecipeList({
     image,

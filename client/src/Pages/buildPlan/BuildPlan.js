@@ -96,7 +96,7 @@ function Plan() {
         console.log(url)
         const inputDay = inputRef.current.value
         const recipeId = event.target.getAttribute("id")
-        switch(inputDay, recipeId) {
+        switch(inputDay) {
             case "sunday":
                 return setPlan({
                         sunday:recipeId
