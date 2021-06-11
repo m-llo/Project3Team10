@@ -3,7 +3,8 @@ const calendarRoutes = require("./calendarRoutes");
 const recipeRoutes = require("./recipeRoutes");
 const logInRoutes = require("./logInRoutes");
 const signUpRoutes = require("./signUpRoutes");
-const listRoutes = require("./listRoutes")
+const listRoutes = require("./listRoutes");
+
 
 // Post routes
 router.use("/recipes", recipeRoutes);
