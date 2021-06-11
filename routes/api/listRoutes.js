@@ -2,6 +2,7 @@ const router = require("express").Router();
 const db = require("../../models");
 const listController = require("../../controllers/listController");
 
+
 router 
 .route ("/")
 .post(listController.create)
@@ -11,6 +12,7 @@ router
 .get(listController.findById)
 .put(listController.update)
 .delete(listController.remove)
+
 
 
 
