@@ -1,10 +1,8 @@
-import React, { useEffect, useState, useContext }  from "react";
+import React, { useEffect, useState}  from "react";
 import CalendarCard from "../CalendarCard/CalendarCard"
 import API from "../../utils/API";
-import CalendarDeleteBtn from "./CalendarDeleteBtn"
-import CalendarCreatePrompt from "./CalendarCreatePrompt"
+
 import CalendarManagePrompt from "./CalendarManagePrompt"
-import CalendarContext from "../../utils/CalendarContext";
 
 function Calendar()  {
     const [plan, setPlan] = useState({})

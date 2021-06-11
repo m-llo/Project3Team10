@@ -1,6 +1,5 @@
-import React, { Component, useEffect } from "react";
+import React from "react";
 import Calendar from "../../components/Calendar/Calendar";
-import API from "../../utils/API";
 import { Link, useLocation } from "react-router-dom";
 import Hero from "../../components/Hero/index"
 
