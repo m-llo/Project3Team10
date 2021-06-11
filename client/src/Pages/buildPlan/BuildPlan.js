@@ -6,8 +6,6 @@ import PlanCards from "../../components/Plan/PlanCards"
 import SavedRecipes from "../../components/Plan/SavedRecipes"
 // import StaticPlan from "../../components/Plan/StaticPlan"
 
-
-
 function Plan() {
     const location = useLocation();
     const inputRef = useRef()
@@ -16,7 +14,7 @@ function Plan() {
 
     const [plan, setPlan] = useState({})
     const [recipes, setRecipes] = useState([]) 
-    
+    // const [ingredients, setIngredients] = useState([]);
 
     useEffect(() => {
        const calendar = API.getCalendar(userId)
@@ -135,9 +133,9 @@ function Plan() {
                 default: return plan;
         }
     }
-
-
-
+    const viewIngredients = event => {
+        console.log(event.target.id)
+    }
     const saveToPlan = event => {
         const image = event.target.getAttribute("image")
         console.log(image)
@@ -155,47 +153,45 @@ function Plan() {
             plan
         })
             //    then refresh page which calls the calendar again and updates the state
-            .then(res => {
-                console.log(label + "successfully added");
-                window.location.reload()
-            })
-            .catch(err => console.log(err))
+        .then(res => {
+            console.log(label + "successfully added");
+               window.location.reload()
+        })
+        .catch(err => console.log(err))
     };
 
     return (
         <div>
             <div className="col- lg text-center">
-                <Link to="/" className={location.pathname === "/"}><button type="button" className="btn btn-warning btn-lg homebtn m-4">Go Home</button></Link>
-                <Link to="/search" className={location.pathname === "/search"}><button type="button" className="btn btn-warning btn-lg homebtn m-4 ">Search for Recipes</button></Link>
+                <Link to="/" className={location.pathname === "/"}><button type="button" className="btn btn-warning btn-lg homebtn m-4">Home</button></Link>
+                <Link to="/search" className={location.pathname === "/search"}><button type="button" className="btn btn-warning btn-lg homebtn m-4 ">Get Recipes</button></Link>
                 <Link to="/list" className={location.pathname === "/list"}><button type="button" className="btn btn-warning btn-lg homebtn m-4">My Shopping List</button></Link>
-
             </div>
             <Hero />
             <div className="row">
-            <h5 className="col-6 text-center display-6 mb-2">My Plan</h5>
-            <h5 className="col-6 text-center display-6 mb-2">My Recipes</h5>
+                <h5 className="col-6 text-center display-6 mb-2">My Plan</h5>
+                <h5 className="col-6 text-center display-6 mb-2">My Recipes</h5>
             </div>
             <div className=" row wrapper">
                {
-                    plan.length > 0 ? (
-                        <div className="col-6">
-                          <PlanCards key={plan[0].sunday.day} day={plan[0].sunday.day} ingredients={plan[0].sunday.ingredients} label={plan[0].sunday.label} url={plan[0].sunday.url} image={plan[0].sunday.image} userId={plan[0].userId}  addbtn={addToList}  delbtn={clearfromPlan} />
-                          <PlanCards key={plan[0].monday.day} day={plan[0].monday.day}ingredients={plan[0].monday.ingredients} label={plan[0].monday.label} url={plan[0].monday.url} image={plan[0].monday.image} userId={plan[0].userId}  addbtn={addToList}  delbtn={clearfromPlan} />
-                          <PlanCards key={plan[0].tuesday.day}day={plan[0].tuesday.day} ingredients={plan[0].tuesday.ingredients} label={plan[0].tuesday.label} url={plan[0].tuesday.url} image={plan[0].tuesday.image} userId={plan[0].userId}  addbtn={addToList}  delbtn={clearfromPlan} />
-                          <PlanCards key={plan[0].wednesday.day}day={plan[0].wednesday.day}ingredients={plan[0].wednesday.ingredients} label={plan[0].wednesday.label} url={plan[0].wednesday.url} image={plan[0].wednesday.image} userId={plan[0].userId}  addbtn={addToList}  delbtn={clearfromPlan} />
-                          <PlanCards key={plan[0].thursday.day} day={plan[0].thursday.day}ingredients={plan[0].thursday.ingredients} label={plan[0].thursday.label} url={plan[0].thursday.url} image={plan[0].thursday.image} userId={plan[0].userId}  addbtn={addToList}  delbtn={clearfromPlan} />
-                          <PlanCards key={plan[0].friday.day}day={plan[0].friday.day} ingredients={plan[0].friday.ingredients} label={plan[0].friday.label} url={plan[0].friday.url} image={plan[0].friday.image} userId={plan[0].userId}  addbtn={addToList}  delbtn={clearfromPlan} />
-                          <PlanCards key={plan[0].saturday.day}day={plan[0].saturday.day} ingredients={plan[0].saturday.ingredients} label={plan[0].saturday.label} url={plan[0].saturday.url} image={plan[0].saturday.image} userId={plan[0].userId} id={plan.id} addbtn={addToList}  delbtn={clearfromPlan} />
-                        </div>
-                    ) : null
+                plan.length > 0 ? (
+                    <div className="col-6">
+                        <PlanCards key={plan[0].sunday.day} day={plan[0].sunday.day} ingredients={plan[0].sunday.ingredients} label={plan[0].sunday.label} url={plan[0].sunday.url} image={plan[0].sunday.image} userId={plan[0].userId}  addbtn={addToList}  delbtn={clearfromPlan} />
+                        <PlanCards key={plan[0].monday.day} day={plan[0].monday.day}ingredients={plan[0].monday.ingredients} label={plan[0].monday.label} url={plan[0].monday.url} image={plan[0].monday.image} userId={plan[0].userId}  addbtn={addToList}  delbtn={clearfromPlan} />
+                        <PlanCards key={plan[0].tuesday.day}day={plan[0].tuesday.day} ingredients={plan[0].tuesday.ingredients} label={plan[0].tuesday.label} url={plan[0].tuesday.url} image={plan[0].tuesday.image} userId={plan[0].userId}  addbtn={addToList}  delbtn={clearfromPlan} />
+                        <PlanCards key={plan[0].wednesday.day}day={plan[0].wednesday.day}ingredients={plan[0].wednesday.ingredients} label={plan[0].wednesday.label} url={plan[0].wednesday.url} image={plan[0].wednesday.image} userId={plan[0].userId}  addbtn={addToList}  delbtn={clearfromPlan} />
+                        <PlanCards key={plan[0].thursday.day} day={plan[0].thursday.day}ingredients={plan[0].thursday.ingredients} label={plan[0].thursday.label} url={plan[0].thursday.url} image={plan[0].thursday.image} userId={plan[0].userId}  addbtn={addToList}  delbtn={clearfromPlan} />
+                        <PlanCards key={plan[0].friday.day}day={plan[0].friday.day} ingredients={plan[0].friday.ingredients} label={plan[0].friday.label} url={plan[0].friday.url} image={plan[0].friday.image} userId={plan[0].userId}  addbtn={addToList}  delbtn={clearfromPlan} />
+                        <PlanCards key={plan[0].saturday.day}day={plan[0].saturday.day} ingredients={plan[0].saturday.ingredients} label={plan[0].saturday.label} url={plan[0].saturday.url} image={plan[0].saturday.image} userId={plan[0].userId} id={plan.id} addbtn={addToList}  delbtn={clearfromPlan} />
+                    </div>
+                ) : null
                 }
                 {
-                    recipes.length ? (
-                        
-                        <div className="col-6 text-center">
-                            {recipes.map(recipe => <SavedRecipes key={recipe.label}data={recipes} saveToPlan={saveToPlan} handleInput={handleInput} deleteFromFavs={deleteFromFavs} />)}
-                        </div>
-                    ) : null
+                recipes.length ? (
+                    <div className="col-6 text-center">
+                        {recipes.map((recipe) => <SavedRecipes key={recipe.label} id={recipe.id} label={recipe.label} image={recipe.image} ingredients={recipe.ingredients} saveToPlan={saveToPlan} viewIngredients={viewIngredients} handleInput={handleInput} deleteFromFavs={deleteFromFavs} />)}
+                    </div>
+                ) : null
                 }
             </div>
         </div>

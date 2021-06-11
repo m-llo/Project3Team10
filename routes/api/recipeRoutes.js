@@ -18,7 +18,7 @@ router
 router
 .route("/:id")
 .get(recipeController.findById)
-// .post(recipeController.update)
+// .post(recipeController.update
 .delete(recipeController.remove);
 
 router 
@@ -29,8 +29,5 @@ router
 router
 .route("/?q")
 .get(recipeController.findByQuery);
-
-
-
 
 module.exports = router;

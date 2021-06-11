@@ -23,7 +23,7 @@ module.exports = {
         label: req.body.label,
         url: req.body.url,
         image: req.body.image,
-        ingredients:[req.body.ingredients]
+        ingredients:req.body.ingredients.toString().split(",")
       })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.json(err));

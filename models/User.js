@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt');
 
+
 const userSchema = new mongoose.Schema({
     email:{
        type:String,
@@ -35,17 +36,6 @@ userSchema.pre('save', function (next) {
     next()
   }
 })
-// userSchema.methods = {
-
-//   beforeCreate: async (newUserData) => {
-//     newUserData.password = await bcrypt.hash(newUserData.password, 10);
-//     return newUserData;
-//   },
-//   beforeUpdate: async (updatedUserData) => {
-//     updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-//     return updatedUserData;
-//   }
-// }
 
 const User = mongoose.model("User", userSchema);
 

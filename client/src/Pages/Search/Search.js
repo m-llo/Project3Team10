@@ -50,14 +50,14 @@ function Search() {
     <div>
         <div className= "col- lg text-center">
           <Link to="/plan" className={location.pathname === "/plan"}><button type="button" className="btn btn-warning btn-lg homebtn m-4">Manage Meal Plan</button></Link>
-          <Link to="/" className={location.pathname === "/"}><button type="button" className="btn btn-warning btn-lg homebtn m-4 ">Go Home</button></Link>
+          <Link to="/" className={location.pathname === "/"}><button type="button" className="btn btn-warning btn-lg homebtn m-4 ">Home</button></Link>
           <Link to="/list" className={location.pathname === "/list"}><button type="button" className="btn btn-warning btn-lg homebtn m-4">My Shopping List</button></Link>
            
        </div>
        <div className="row"></div>
         <Hero />
         
-        <h1 className="text-center">Search For Recipes!</h1>
+        <div className="text-center display-4">Search For Recipes!</div>
  
         <form className="search">
             <div className="form-group-center">
@@ -68,7 +68,7 @@ function Search() {
                     type="text"
                     placeholder="Type in a Cuisine Type or Main Ingredient"
                 />
-                <button type="success" onClick={handleFormSubmit} className="btn-lg btn-success">
+                <button type="success" onClick={handleFormSubmit} className="btn-lg btn-warning">
                     Search
                 </button>
             </div>

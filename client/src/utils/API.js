@@ -10,13 +10,13 @@ export default {
     return axios.post("/api/signup/new", userObj)
   },
 
- logIn: function(loginObj){
-  return axios.get("/api/user/login", loginObj)
- },
+  logIn: function(loginObj){
+    return axios.get("/api/user/login", loginObj)
+  },
 
- logOut: function (){
-  return axios.post("/api/user/logout")
- },
+  logOut: function (){
+    return axios.post("/api/user/logout")
+  },
 
 // recipe front end routes
   searchRecipes: function(q){
@@ -43,15 +43,18 @@ export default {
     return axios.get("/api/recipes");
   },
 
-
+  getIngredients: function(userId, ingredients){
+    return axios.get("/api/list/" + userId, ingredients)
+  },
+  
   // plan front end routes
- getCalendar: function(id){
-        return axios.get("/api/calendar/" + id) 
-},
- deleteCalendar: function(id) {
+  getCalendar: function(id){
+    return axios.get("/api/calendar/" + id) 
+  },
+  deleteCalendar: function(id) {
     return axios.delete("/api/calendar/" + id);
   },
-clearFromCalendar: function(id, day) {
+  clearFromCalendar: function(id, day) {
     return axios.post("/api/calendar/" + id, {
       day: day,
       recipeId:""});
@@ -64,7 +67,7 @@ clearFromCalendar: function(id, day) {
     return axios.post("/api/calendar",{
       userId: userId,
     })
-},
+  },
 
 
 // shopping list front end routes

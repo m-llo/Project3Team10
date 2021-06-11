@@ -3,9 +3,6 @@ import "./calendarStyle.css";
 import { Link } from "react-router-dom";
 
 function PlanCards(props) {
-    
-    
-    // if saved plan exist in database will set the calendar to the recipes state then populate the calendar fields
     return (
         <div>
             <div className="card p-1 m-1">
