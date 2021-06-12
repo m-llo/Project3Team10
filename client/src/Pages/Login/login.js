@@ -29,8 +29,8 @@ export default function Login() {
 
    
   API.logIn ({
-    email: email,
-    password: password,
+      email,
+     password,
   })
   .then(res =>{ 
     document.location.replace('/')
