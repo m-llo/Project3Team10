@@ -26,8 +26,7 @@ export default function Login() {
 
   const login = (event) => {
     event.preventDefault()
-    const email = event.target.getAttribute("email")
-    const password = event.target.getAttribute("password")
+
    
   API.logIn ({
     email: email,
