@@ -10,8 +10,8 @@
     "start:dev": "concurrently \" npm run watch\" \"cd client && npm start\"",
     "client": "cd client && npm run start",
     "install": "cd client && npm install",
-    "build": "cd client && npm run build && grunt dist",
-    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build",
     "seed": "node scripts/seedDB.js && node scripts/userDB.js",
     "watch": "nodemon server.js"
   },
