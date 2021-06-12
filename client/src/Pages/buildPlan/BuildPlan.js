@@ -48,9 +48,7 @@ function Plan() {
     
     console.log("plan state", plan);
 
-    if(plan.length > 0){
-        console.log("friday" , plan.friday.day)
-    }
+  
     
 
     function clearfromPlan (event){

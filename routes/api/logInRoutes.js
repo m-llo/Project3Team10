@@ -17,9 +17,10 @@ router.post('/login', async (req, res) => {
     }
 
     const validPassword = await dbUserData.checkPassword(req.body.password);
-    console.log(validPassword)
+    console.log("valid password", validPassword)
     const userId = dbUserData.id
-    const userEmail=dbUserData.email
+    console.log("id", userId)
+  
 
     if (!validPassword) {
       res
@@ -27,15 +28,18 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect password. Please try again!' });
       return;
     }
-    console.log(req.session)
+    console.log("after password verify id", userId)
     // Once the user successfully logs in, set up the sessions variable 'loggedIn'
     req.session.save(() => {
         req.session.loggedIn = true;
-        req.session.id=userId
-        req.session.email=userEmail;
+        req.session.user_id=userId
+       
         res.status(200)
         .json({ user: dbUserData, message: 'You are now logged in!' });
     });
+
+    console.log("session" , req.session)
+    console.log("session id" , session.user_id)
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
