@@ -11,7 +11,7 @@ return (
             <div className="col-sx-4 sm-2">
               <img src={props.image} alt="recipe" ></img>
             </div>
-            <input placeholder="Which day to you want this?" id={props.id} label={props.label} onChange={e => handleInput(e.target.value)} ref={ref}></input>
+            <input placeholder="Which day to you want this?" id={props.id} label={props.label} url={props.url} image={props.image} ingredients={props.ingredients} onChange={e => handleInput(e.target.value)} ref={ref}></input>
         </div>
         <div className="">
             <button className="btn btn-outline-warning btn-sm .text-wrap"  id={props.id} label={props.label} url={props.url} image={props.image} ingredients={props.ingredients} onClick={(event) => saveToPlan(event)} name="add">Add to Plan</button>

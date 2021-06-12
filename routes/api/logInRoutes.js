@@ -6,26 +6,28 @@ const User  = require('../../models/User.js');
 
 router.post('/login', async (req, res) => {
   try {
-    const dbUserData = await User.findOne({email: req.email});
+    console.log("email", req.body.email)
+    const dbUserData = await User.findOne({email: req.body.email});
 
     if (!dbUserData) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password. Please try again!' });
+        .json({ message: 'Incorrect email!' });
       return;
     }
 
-    const validPassword = await dbUserData.CheckPassword(req.body.password);
+    const validPassword = await dbUserData.checkPassword(req.body.password);
+    console.log(validPassword)
     const userId = dbUserData.id
     const userEmail=dbUserData.email
 
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password. Please try again!' });
+        .json({ message: 'Incorrect password. Please try again!' });
       return;
     }
-
+    console.log(req.session)
     // Once the user successfully logs in, set up the sessions variable 'loggedIn'
     req.session.save(() => {
         req.session.loggedIn = true;
