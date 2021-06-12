@@ -1,6 +1,9 @@
 const router = require("express").Router();
-const db = require("../../models");
 const recipeController = require("../../controllers/recipeController");
+
+router 
+.route ("/")
+.get(recipeController.findAll);
 
 router 
 .route ("/new")
@@ -20,10 +23,6 @@ router
 .get(recipeController.findById)
 // .post(recipeController.update
 .delete(recipeController.remove);
-
-router 
-.route ("/")
-.get(recipeController.findAll);
 
 
 router

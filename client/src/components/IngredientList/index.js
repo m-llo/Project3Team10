@@ -1,5 +1,5 @@
 import React from "react";
-// import RecipeSearch from "../RecipeSearch/RecipeSearch";
+
 
 function IngredientList({ ingredients }) 
 {
