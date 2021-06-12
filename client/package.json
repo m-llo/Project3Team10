@@ -22,7 +22,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test--env=jsdom",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -34,8 +34,9 @@
   "browserslist": {
     "production": [
       ">0.2%",
-      "not dead",
-      "not op_mini all"
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
     ],
     "development": [
       "last 1 chrome version",
