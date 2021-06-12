@@ -2,7 +2,7 @@ import React from "react";
 import Hero from "../../components/Hero/index"
 import { Link, useLocation } from "react-router-dom";
 import IngredientList from "../../components/IngredientList";
-import API from "../../utils/API";
+
 
 function ShoppingList() {
   

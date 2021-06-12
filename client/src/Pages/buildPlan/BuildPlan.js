@@ -9,7 +9,7 @@ import SavedRecipes from "../../components/Plan/SavedRecipes"
 function Plan() {
     const location = useLocation();
     const inputRef = useRef()
-    const userId = "60bee00177427c19cc9e1e2f"
+    const userId = ""
 
 
     const [plan, setPlan] = useState({})
