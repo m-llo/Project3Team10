@@ -9,7 +9,7 @@ import SavedRecipes from "../../components/Plan/SavedRecipes"
 function Plan() {
     const location = useLocation();
     const inputRef = useRef()
-    const userId = ""
+    const userId = "60c42726807d563e28df18c7"
 
 
     const [plan, setPlan] = useState({})
@@ -18,15 +18,13 @@ function Plan() {
 
     useEffect(() => {
        const calendar = API.getCalendar(userId)
-            .then((res) => { console.log("res", res); console.log("res.data", res.data[0]); 
-            setPlan(res.data[0])
-         })
+            .then((res) => { console.log("res", res); console.log("res.data", res.data[0]); setPlan(res.data[0])})
             .catch(err => console.log(err));
-
+            
         if (!calendar){
             console.log("building calendar")
             API.createCalendar(userId)
-            .then((res) => { console.log("res", res); console.log("res.data", res.data); setPlan(res.data[0]) })
+            .then((res) => { console.log("res", res); console.log("res.data", res.data[0]); setPlan(res.data[0]) })
             .catch(err => console.log(err))
         }
         // API.getRecipesByUser(userId)
@@ -37,6 +35,7 @@ function Plan() {
         .catch(err => console.log(err));
 
     }, [])
+    
     
  function addToList (event) {
     const ingredients = event.target.getAttribute("ingredients")
@@ -134,9 +133,9 @@ function Plan() {
     return (
         <div>
             <div className="col- lg text-center">
-                <Link to="/" className={location.pathname === "/"}><button type="button" className="btn btn-warning btn-lg homebtn m-4">Home</button></Link>
-                <Link to="/search" className={location.pathname === "/search"}><button type="button" className="btn btn-warning btn-lg homebtn m-4 ">Get Recipes</button></Link>
-                <Link to="/list" className={location.pathname === "/list"}><button type="button" className="btn btn-warning btn-lg homebtn m-4">My Shopping List</button></Link>
+                <Link to="/" href={location.pathname === "/"}><button type="button" className="btn btn-warning btn-lg homebtn m-4">Home</button></Link>
+                <Link to="/search" href={location.pathname === "/search"}><button type="button" className="btn btn-warning btn-lg homebtn m-4 ">Get Recipes</button></Link>
+                <Link to="/list" href={location.pathname === "/list"}><button type="button" className="btn btn-warning btn-lg homebtn m-4">My Shopping List</button></Link>
             </div>
             <Hero />
             <div className="row">

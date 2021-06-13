@@ -47,10 +47,10 @@ function StaticPlanCards({ data, addbtn, delbtn }) {
                 </div>
                 {/* <div className="row justify-items-around">
                     <div className="col">
-                        <button className="btn btn-outline-warning p-1 .text-wrap" id={""} value={""} onClick={""} name="add">Add to List</button>
+                        <button className="btn btn-outline-warning p-1 text-wrap" id={""} value={""} onClick={""} name="add">Add to List</button>
                     </div>
                     <div className="col">
-                        <button className="btn btn-outline-warning p-1 .text-wrap" id={""} onClick={""} name="delete">Remove from Plan</button>
+                        <button className="btn btn-outline-warning p-1 text-wrap" id={""} onClick={""} name="delete">Remove from Plan</button>
                     </div>
                 </div> */}
             </div>
@@ -77,10 +77,10 @@ function StaticPlanCards({ data, addbtn, delbtn }) {
                 </div>
                 {/* <div className="row justify-items-around">
                     <div className="col">
-                        <button className="btn btn-outline-warning p-1 .text-wrap" id={""} value={""} onClick={""} name="add">Add to List</button>
+                        <button className="btn btn-outline-warning p-1 text-wrap" id={""} value={""} onClick={""} name="add">Add to List</button>
                     </div>
                     <div className="col">
-                        <button className="btn btn-outline-warning p-1 .text-wrap" id={""} onClick={""} name="delete">Remove from Plan</button>
+                        <button className="btn btn-outline-warning p-1 text-wrap" id={""} onClick={""} name="delete">Remove from Plan</button>
                     </div>
                 </div> */}
             </div>

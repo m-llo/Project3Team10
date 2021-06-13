@@ -13,7 +13,7 @@ return (
             </div>
             <input placeholder="Which day to you want this?" id={props.id} label={props.label} url={props.url} image={props.image} ingredients={props.ingredients} onChange={e => handleInput(e.target.value)} ref={ref}></input>
         </div>
-        <div className="">
+        <div>
             <button className="btn btn-outline-warning btn-sm .text-wrap"  id={props.id} label={props.label} url={props.url} image={props.image} ingredients={props.ingredients} onClick={(event) => saveToPlan(event)} name="add">Add to Plan</button>
             <button className="btn btn-outline-success btn-sm .text-wrap"  id={props.id} label={props.label} url={props.url} image={props.image} ingredients={props.ingredients} onClick={(event) => viewIngredients(event)} name="add">View Ingredients</button>
             <button className="btn btn-outline-danger  btn-sm" id={props.id} onClick={delBtn} name="delete">Remove</button>
