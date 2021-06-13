@@ -9,7 +9,7 @@ import SavedRecipes from "../../components/Plan/SavedRecipes"
 function Plan() {
     const location = useLocation();
     const inputRef = useRef()
-    const userId = "60c42726807d563e28df18c7"
+    const calendarId = "60c42726807d563e28df18c7"
 
 
     const [plan, setPlan] = useState({})
@@ -17,16 +17,16 @@ function Plan() {
     // const [ingredients, setIngredients] = useState([]);
 
     useEffect(() => {
-       const calendar = API.getCalendar(userId)
+        API.getCalendar(calendarId)
             .then((res) => { console.log("res", res); console.log("res.data", res.data[0]); setPlan(res.data[0])})
             .catch(err => console.log(err));
             
-        if (!calendar){
-            console.log("building calendar")
-            API.createCalendar(userId)
-            .then((res) => { console.log("res", res); console.log("res.data", res.data[0]); setPlan(res.data[0]) })
-            .catch(err => console.log(err))
-        }
+        // if (!calendar){
+        //     console.log("building calendar")
+        //     API.createCalendar(userId)
+        //     .then((res) => { console.log("res", res); console.log("res.data", res.data[0]); setPlan(res.data[0]) })
+        //     .catch(err => console.log(err))
+        // }
         // API.getRecipesByUser(userId)
         // .then((res) => { setRecipes(res); console.log("recipes", recipes) })
         // .catch(err => console.log(err));
@@ -34,7 +34,7 @@ function Plan() {
         .then((res) => {console.log("res", res); console.log("res.data", res.data); setRecipes(res.data) })
         .catch(err => console.log(err));
 
-    }, [])
+    }, [plan])
     
     
  function addToList (event) {

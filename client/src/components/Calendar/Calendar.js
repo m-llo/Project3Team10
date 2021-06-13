@@ -7,22 +7,22 @@ function Calendar () {
    const [plan, setPlan] = useState({})
     useEffect(()=> {
         // const userId = "60c42726807d563e28df18c7"
-       const userId = "60c42726807d563e28df18c7"
-    //   const userId = " ";
+    //    const userId = "60c42726807d563e28df18c7"
+      const userId = "60c664baac01b13e4c5d569b";
       const calendar =  API.getCalendar(userId)
         .then((res) => { console.log("res", res); console.log("res.data[0]", res.data[0]); setPlan(res.data[0])})
         .catch(err => console.log(err));
      
      if (!calendar){
         console.log("building calendar")
-        API.createCalendar()
+        API.createCalendar(userId)
         .then((res) => { console.log("res", res); console.log("res.data[0]", res.data[0]); setPlan(res.data[0]) })
         .catch(err => console.log(err))
     }
         
     }, [plan])
-   console.log("plan", plan)
-   console.log("plan.sunday", plan.sunday)
+//    console.log("plan", plan)
+//    console.log("plan.sunday", plan.sunday)
 //    console.log("plan.saturday", plan.saturday)
 //    console.log("plan.sunday.day", plan.sunday.day)
 //    console.log("plan.saturday.day", plan.saturday.day)
