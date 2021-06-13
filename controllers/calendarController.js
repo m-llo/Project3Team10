@@ -5,7 +5,7 @@ module.exports = {
   findById: function(req, res) {
     db.Calendar.find({userId : req.params.id})
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.json(err));
+      .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
     db.Calendar.create(req.body)
