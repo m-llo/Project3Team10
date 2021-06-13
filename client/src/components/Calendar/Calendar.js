@@ -6,13 +6,21 @@ import CalendarManagePrompt from "./CalendarManagePrompt"
 function Calendar()  {
     const [plan, setPlan] = useState({})
     useEffect(()=>{
-        // const userId = "60bee00177427c19cc9e1e2f";
-        const userId = " ";
-        API.getCalendar(userId)
-        .then((res) => { console.log("res", res); console.log("res.data", res.data); 
-        setPlan(res.data)
-     })
+        // const userId = "60c42726807d563e28df18c7"
+       const userId = "60bee00177427c19cc9e1e2c"
+    //   const userId = " ";
+      const calendar =  API.getCalendar(userId)
+        .then((res) => { console.log("res", res); console.log("res.data", res.data[0]); 
+        setPlan(res.data[0])
         .catch(err => console.log(err));
+     })
+     if (!calendar){
+        console.log("building calendar")
+        API.createCalendar(userId)
+        .then((res) => { console.log("res", res); console.log("res.data", res.data[0]); setPlan(res.data[0]) })
+        .catch(err => console.log(err))
+    }
+        
     }, [])
    
     return (
@@ -21,21 +29,23 @@ function Calendar()  {
                 <div className="col-md-12 display-2 text-center">
                     My Meal Plan
                 </div>
-            {
-                plan.length > 0 ? (
+                <div className="align-content-center">
+                 <CalendarManagePrompt/>
+             </div>
+        {plan.hasOwnProperty("sunday") ? ( 
                 <div className="card-group">
-                    <CalendarCard key={plan[0].sunday.day} day={plan[0].sunday.day} ingredients={plan[0].sunday.ingredients} label={plan[0].sunday.label} url={plan[0].sunday.url} image={plan[0].sunday.image} userId={plan[0].userId}/>
-                    <CalendarCard key={plan[0].monday.day} day={plan[0].monday.day} ingredients={plan[0].monday.ingredients} label={plan[0].monday.label} url={plan[0].monday.url} image={plan[0].monday.image} userId={plan[0].userId}   />
-                    <CalendarCard key={plan[0].tuesday.day} day={plan[0].tuesday.day}ingredients={plan[0].tuesday.ingredients} label={plan[0].tuesday.label} url={plan[0].tuesday.url} image={plan[0].tuesday.image} userId={plan[0].userId}   />
-                    <CalendarCard key={plan[0].wednesday.day}day={plan[0].wednesday.day} ingredients={plan[0].wednesday.ingredients} label={plan[0].wednesday.label} url={plan[0].wednesday.url} image={plan[0].wednesday.image} userId={plan[0].userId}   />
-                    <CalendarCard key={plan[0].thursday.day} day={plan[0].thursday.day}ingredients={plan[0].thursday.ingredients} label={plan[0].thursday.label} url={plan[0].thursday.url} image={plan[0].thursday.image} userId={plan[0].userId}   />
-                    <CalendarCard key={plan[0].friday.day} day={plan[0].friday.day} ingredients={plan[0].friday.ingredients} label={plan[0].friday.label} url={plan[0].friday.url} image={plan[0].friday.image} userId={plan[0].userId}  />
-                    <CalendarCard key={plan[0].saturday.day} day={plan[0].saturday.day} ingredients={plan[0].saturday.ingredients} label={plan[0].saturday.label} url={plan[0].saturday.url} image={plan[0].saturday.image} userId={plan[0].userId} id={plan.id} />
+                    <CalendarCard day={plan.sunday.day} ingredients={plan.sunday.ingredients} label={plan.sunday.label} url={plan.sunday.url} image={plan.sunday.image} userId={plan.userId}/>
+                    <CalendarCard day={plan.monday.day} ingredients={plan.monday.ingredients} label={plan.monday.label} url={plan.monday.url} image={plan.monday.image} userId={plan.userId}   />
+                    <CalendarCard day={plan.tuesday.day}ingredients={plan.tuesday.ingredients} label={plan.tuesday.label} url={plan.tuesday.url} image={plan.tuesday.image} userId={plan.userId}   />
+                    <CalendarCard day={plan.wednesday.day} ingredients={plan.wednesday.ingredients} label={plan.wednesday.label} url={plan.wednesday.url} image={plan.wednesday.image} userId={plan.userId}   />
+                    <CalendarCard day={plan.thursday.day}ingredients={plan.thursday.ingredients} label={plan.thursday.label} url={plan.thursday.url} image={plan.thursday.image} userId={plan.userId}   />
+                    <CalendarCard day={plan.friday.day} ingredients={plan.friday.ingredients} label={plan.friday.label} url={plan.friday.url} image={plan.friday.image} userId={plan.userId}  />
+                    <CalendarCard day={plan.saturday.day} ingredients={plan.saturday.ingredients} label={plan.saturday.label} url={plan.saturday.url} image={plan.saturday.image} userId={plan.userId} id={plan.id} />
                 </div>
-            ) : <div className="align-content-center">
-                    <CalendarManagePrompt/>
-                </div>
+               
+             ) : null
             }
+           
             </div>
         </div>
     )  
