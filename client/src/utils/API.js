@@ -43,8 +43,8 @@ export default {
     return axios.get("/api/recipes");
   },
 
-  getIngredients: function(userId, ingredients){
-    return axios.get("/api/list/" + userId, ingredients)
+  getIngredients: function(id) {
+    return axios.get("/api/recipes/" + id)
   },
   
   // plan front end routes
