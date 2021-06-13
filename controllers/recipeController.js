@@ -1,11 +1,11 @@
-// const db = require("../models");
+const Recipe = require("../models/recipe.js");
 
-// module.exports = {
-//   findAll: function(req, res) {
-//     db.Recipe.find({})
-//       .then(dbModel => res.json(dbModel))
-//       .catch(err => res.json(err));
-//   },
+module.exports = {
+  findAll: function(req, res) {
+    Recipe.find({})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.json(err));
+  },
 //   findByQuery: function(req, res) {
 //     db.Recipe.find( {name: req.query})
 //       .then(recipes => res.json(recipes))
@@ -38,4 +38,4 @@
 //       .then(dbModel => res.json(dbModel))
 //       .catch(err => res.json(err));
 //   }
-// };
+};
