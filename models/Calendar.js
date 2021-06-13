@@ -58,7 +58,7 @@ const CalendarSchema = new Schema(
 
      saturday: {
       day: {type: String, default: 'Saturday'},
-      Label: {type: String},
+      label: {type: String},
       url: {type: String},
       ingredients:[String],
       image: {type: String}

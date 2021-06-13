@@ -3,26 +3,29 @@ import CalendarCard from "../CalendarCard/CalendarCard"
 import API from "../../utils/API";
 import CalendarManagePrompt from "./CalendarManagePrompt"
 
-function Calendar()  {
-    const [plan, setPlan] = useState({})
-    useEffect(()=>{
+function Calendar () {
+   const [plan, setPlan] = useState({})
+    useEffect(()=> {
         // const userId = "60c42726807d563e28df18c7"
-       const userId = "60bee00177427c19cc9e1e2c"
+       const userId = "60c42726807d563e28df18c7"
     //   const userId = " ";
       const calendar =  API.getCalendar(userId)
-        .then((res) => { console.log("res", res); console.log("res.data", res.data[0]); 
-        setPlan(res.data[0])
+        .then((res) => { console.log("res", res); console.log("res.data[0]", res.data[0]); setPlan(res.data[0])})
         .catch(err => console.log(err));
-     })
+     
      if (!calendar){
         console.log("building calendar")
-        API.createCalendar(userId)
-        .then((res) => { console.log("res", res); console.log("res.data", res.data[0]); setPlan(res.data[0]) })
+        API.createCalendar()
+        .then((res) => { console.log("res", res); console.log("res.data[0]", res.data[0]); setPlan(res.data[0]) })
         .catch(err => console.log(err))
     }
         
-    }, [])
-   
+    }, [plan])
+   console.log("plan", plan)
+   console.log("plan.sunday", plan.sunday)
+//    console.log("plan.saturday", plan.saturday)
+//    console.log("plan.sunday.day", plan.sunday.day)
+//    console.log("plan.saturday.day", plan.saturday.day)
     return (
         <div className="wrapper px-4">
             <div className="row justity-content-end">
