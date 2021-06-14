@@ -1,9 +1,10 @@
 import React, { useEffect, useState} from "react";
 import API from "../../utils/API";
 import { Link, useLocation } from "react-router-dom";
-import Hero from "../../components/Hero/index"
-import PlanCards from "../../components/Plan/PlanCards"
-import SavedRecipes from "../../components/Plan/SavedRecipes"
+import Hero from "../../components/Hero/index";
+import PlanCards from "../../components/Plan/PlanCards";
+import SavedRecipes from "../../components/Plan/SavedRecipes";
+import Modal from "../../components/Modal/Modal";
 // import StaticPlan from "../../components/Plan/StaticPlan"
 
 function Plan() {
@@ -11,30 +12,44 @@ function Plan() {
     const userId = "60c42726807d563e28df18c7"
     let inputDay =""
 
+
+function Plan(props) {
+    const location = useLocation();
+    const inputRef = useRef()
+    const userId = "60bee00177427c19cc9e1e2f"
     const [plan, setPlan] = useState({})
-    const [recipes, setRecipes] = useState([]) 
-    // const [ingredients, setIngredients] = useState([]);
+    const [recipes, setRecipes] = useState([])
+    const [recipeID, setRecipeID]=useState({})
+    const [showModal, setShowModal] = useState(false);
+    const [, setHideModal] = useState(false);
+    const closeModal = () => {
+        setHideModal(true);
+        setShowModal(false);
+    }
+    
 
     useEffect(() => {
         API.getCalendar(userId)
             .then((res) => { console.log("res", res); console.log("res.data", res.data[0]); setPlan(res.data[0])})
+
             .catch(err => console.log(err));
-            
-        // if (!calendar){
-        //     console.log("building calendar")
-        //     API.createCalendar(userId)
-        //     .then((res) => { console.log("res", res); console.log("res.data", res.data[0]); setPlan(res.data[0]) })
-        //     .catch(err => console.log(err))
-        // }
+
+        if (!calendar){
+            console.log("building calendar")
+            API.createCalendar(userId)
+            .then((res) => { console.log("res", res); console.log("res.data", res.data); setPlan(res.data) })
+            .catch(err => console.log(err))
+        }
         // API.getRecipesByUser(userId)
         // .then((res) => { setRecipes(res); console.log("recipes", recipes) })
         // .catch(err => console.log(err));
+        
         API.getRecipes()
-        .then((res) => {console.log("res", res); console.log("res.data", res.data); setRecipes(res.data) })
+        .then((res) => {console.log("res", res); console.log("res.data", res.data); setRecipes(res.data)})
         .catch(err => console.log(err));
 
     }, [])
-    
+
     
  function addToList (event) {
     const ingredients = event.target.getAttribute("ingredients")
@@ -46,7 +61,9 @@ function Plan() {
     
     console.log("plan state", plan);
 
-  
+    if(plan.length > 0){
+        console.log("friday" , plan[0].friday.day)
+    }
     
 
     function clearfromPlan (event){
@@ -111,7 +128,7 @@ function Plan() {
                 })
 
         console.log("new plan ", plan)
-        
+      
         API.updateCalendar(
             planId,
             plan
@@ -123,19 +140,44 @@ function Plan() {
             //    window.location.reload()
         })
         .catch(err => console.log(err))
-    };
+    }
+
+    const viewIngredients = event => {
+        let idOfRecipe = event.target.getAttribute("data-id");
+        console.log("Target the recipe id: ", idOfRecipe);
+        getTheID(idOfRecipe)
+        setShowModal(true);
+    }
+
+    const getTheID = (id) => {
+            API.getIngredients(id)
+            .then((oneRecipe)=>{
+                console.log("THIS IS ONE RECIPE", oneRecipe);
+                let idOfRecipe = oneRecipe.data;
+                idOfRecipe = {
+                    image: idOfRecipe.image,
+                    label: idOfRecipe.label,
+                    ingredients: idOfRecipe.ingredients.toString().split(',')
+                }
+                setRecipeID(idOfRecipe)
+                console.log(recipeID)
+            })
+    }
+            // setRecipeID({recipeID: idOfRecipe})
+ 
 
     return (
         <div>
             <div className="col- lg text-center">
-                <Link to="/" href={location.pathname === "/"}><button type="button" className="btn btn-warning btn-lg homebtn m-4">Home</button></Link>
-                <Link to="/search" href={location.pathname === "/search"}><button type="button" className="btn btn-warning btn-lg homebtn m-4 ">Get Recipes</button></Link>
-                <Link to="/list" href={location.pathname === "/list"}><button type="button" className="btn btn-warning btn-lg homebtn m-4">My Shopping List</button></Link>
+                <Link to="/" className={location.pathname === "/"}><button type="button" className="btn btn-warning btn-lg homebtn m-4">Go Home</button></Link>
+                <Link to="/search" className={location.pathname === "/search"}><button type="button" className="btn btn-warning btn-lg homebtn m-4 ">Search for Recipes</button></Link>
+                <Link to="/list" className={location.pathname === "/list"}><button type="button" className="btn btn-warning btn-lg homebtn m-4">My Shopping List</button></Link>
+
             </div>
             <Hero />
             <div className="row">
-                <h5 className="col-6 text-center display-6 mb-2">My Plan</h5>
-                <h5 className="col-6 text-center display-6 mb-2">My Recipes</h5>
+            <h5 className="col-6 text-center display-6 mb-2">My Plan</h5>
+            <h5 className="col-6 text-center display-6 mb-2">My Recipes</h5>
             </div>
             <div className=" row wrapper">
                {
@@ -152,11 +194,20 @@ function Plan() {
                 ) : null
                 }
                 {
-                recipes.length ? (
-                    <div className="col-6 text-center">
-                        {recipes.map((recipe) => <SavedRecipes key={recipe.label} id={recipe.id} label={recipe.label} image={recipe.image} ingredients={recipe.ingredients} saveToPlan={saveToPlan} viewIngredients={viewIngredients} handleInput={handleInput} deleteFromFavs={deleteFromFavs} />)}
-                    </div>
-                ) : null
+                    recipes.length ? (
+                        <>
+                        <div className="col-6 text-center">
+                            {recipes.map((recipe) => <SavedRecipes key={recipe.label} label={recipe.label} image={recipe.image} ingredients={recipe.ingredients} id={recipe._id} viewIngredients={viewIngredients} saveToPlan={saveToPlan} handleInput={handleInput} deleteFromFavs={deleteFromFavs} />)}
+                        </div>
+                        <Modal 
+                            status={showModal}
+                            image={recipeID.image}
+                            label={recipeID.label}
+                            ingredients={recipeID.ingredients}
+                            hideModal={closeModal}
+                            />
+                        </>
+                    ) : null
                 }
             </div>
         </div>
