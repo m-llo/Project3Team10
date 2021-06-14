@@ -9,7 +9,8 @@ import Modal from "../../components/Modal/Modal";
 
 function Plan() {
     const location = useLocation();
-    const userId = "60c42726807d563e28df18c7"
+    let userId = sessionStorage.getItem("logged user")
+    // const userId = "60c42726807d563e28df18c7"
     let inputDay =""
     const [plan, setPlan] = useState({})
     const [recipes, setRecipes] = useState([])
@@ -71,7 +72,7 @@ function Plan() {
         const recipeId = event.target.getAttribute("id")
         const label = event.target.getAttribute("label")
         API.deleteRecipe(
-          recipeId,
+          recipeId
         )
             //    then refresh page which calls the calendar again and updates the state
             .then(res => {
