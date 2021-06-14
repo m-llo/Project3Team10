@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState} from "react";
 import API from "../../utils/API";
 import { Link, useLocation } from "react-router-dom";
 import Hero from "../../components/Hero/index"
@@ -8,16 +8,15 @@ import SavedRecipes from "../../components/Plan/SavedRecipes"
 
 function Plan() {
     const location = useLocation();
-    const inputRef = useRef()
-    const calendarId = "60c42726807d563e28df18c7"
-
+    const userId = "60c42726807d563e28df18c7"
+    let inputDay =""
 
     const [plan, setPlan] = useState({})
     const [recipes, setRecipes] = useState([]) 
     // const [ingredients, setIngredients] = useState([]);
 
     useEffect(() => {
-        API.getCalendar(calendarId)
+        API.getCalendar(userId)
             .then((res) => { console.log("res", res); console.log("res.data", res.data[0]); setPlan(res.data[0])})
             .catch(err => console.log(err));
             
@@ -34,7 +33,7 @@ function Plan() {
         .then((res) => {console.log("res", res); console.log("res.data", res.data); setRecipes(res.data) })
         .catch(err => console.log(err));
 
-    }, [plan])
+    }, [])
     
     
  function addToList (event) {
@@ -81,31 +80,14 @@ function Plan() {
             .catch(err => console.log(err))
     }
     const handleInput = event =>{
-        const image = event.target.getAttribute("image")
-        console.log(image)
-        const label = event.target.getAttribute("label")
-        console.log(label)
-        const ingredients = event.target.getAttribute("ingredients")
-        console.log(ingredients)
-        const url = event.target.getAttribute("url")
-        console.log(url)
-        const inputDay = inputRef.current.value
-       
-      
-                return setPlan({
-                    ...plan,   
-                    [inputDay] : {
-                        image,
-                        url,
-                        ingredients,
-                        label,
-                    } 
-                })            
-             
+        console.log("entered value", event.target.value)
+        inputDay = event.target.value  
+        console.log("input day",inputDay)      
     }
     const viewIngredients = event => {
         console.log(event.target.id)
     }
+   
     const saveToPlan = event => {
         const image = event.target.getAttribute("image")
         console.log(image)
@@ -115,17 +97,30 @@ function Plan() {
         console.log(ingredients)
         const url = event.target.getAttribute("url")
         console.log(url)
-        const planId = plan.id
+        const planId = plan._id
+        console.log("plan id ", planId)
+
+        setPlan({
+                    ...plan,   
+                    [inputDay] : {
+                        image,
+                        url,
+                        ingredients,
+                        label,
+                    } 
+                })
+
+        console.log("new plan ", plan)
         
-        API.updateCalendar({
-            id: planId,
-            // calendar
+        API.updateCalendar(
+            planId,
             plan
-        })
+        )
             //    then refresh page which calls the calendar again and updates the state
         .then(res => {
-            console.log(label + "successfully added");
-               window.location.reload()
+            console.log(label + " successfully added");
+            alert(label + " successfully added")
+            //    window.location.reload()
         })
         .catch(err => console.log(err))
     };
@@ -146,7 +141,7 @@ function Plan() {
                {
                 plan.hasOwnProperty("sunday") ? (
                     <div className="col-6">
-                        <PlanCards  day={plan.sunday.day} ingredients={plan.sunday.ingredients} label={plan.sunday.label} url={plan.sunday.url} image={plan.sunday.image} userId={plan.userId}  addbtn={addToList}  delbtn={clearfromPlan} />
+                        <PlanCards  day={plan.sunday.day} ingredients={plan.sunday.ingredients} label={plan.sunday.label} url={plan.sunday.url} image={plan.sunday.image} userId={plan.userId}  addbtn={addToList}  delbtn={clearfromPlan}   />
                         <PlanCards  day={plan.monday.day}ingredients={plan.monday.ingredients} label={plan.monday.label} url={plan.monday.url} image={plan.monday.image} userId={plan.userId}  addbtn={addToList}  delbtn={clearfromPlan} />
                         <PlanCards day={plan.tuesday.day} ingredients={plan.tuesday.ingredients} label={plan.tuesday.label} url={plan.tuesday.url} image={plan.tuesday.image} userId={plan.userId}  addbtn={addToList}  delbtn={clearfromPlan} />
                         <PlanCards day={plan.wednesday.day}ingredients={plan.wednesday.ingredients} label={plan.wednesday.label} url={plan.wednesday.url} image={plan.wednesday.image} userId={plan.userId}  addbtn={addToList}  delbtn={clearfromPlan} />

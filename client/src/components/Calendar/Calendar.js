@@ -7,21 +7,50 @@ function Calendar () {
    const [plan, setPlan] = useState({})
     useEffect(()=> {
         // const userId = "60c42726807d563e28df18c7"
-    //    const userId = "60c42726807d563e28df18c7"
+    //    const calendarId = "60c42726807d563e28df18c7"
       const userId = "60c664baac01b13e4c5d569b";
-      const calendar =  API.getCalendar(userId)
-        .then((res) => { console.log("res", res); console.log("res.data[0]", res.data[0]); setPlan(res.data[0])})
-        .catch(err => console.log(err));
+      
+      API.createCalendar()
+      .then((res) => { console.log("res", res); 
+                             console.log("res.data", res.data); 
+                             console.log("calendar id", res.data._id); 
+                             setPlan(res.data) })
+      .catch(err => console.log(err))
      
-     if (!calendar){
-        console.log("building calendar")
-        API.createCalendar(userId)
-        .then((res) => { console.log("res", res); console.log("res.data[0]", res.data[0]); setPlan(res.data[0]) })
-        .catch(err => console.log(err))
-    }
+    //   API.getCalendar(userId)
+    //     .then((res) => { console.log("res", res); console.log("res.data[0]", res.data[0]); setPlan(res.data[0])})
+    //     .catch(err => console.log(err));
+     
+    //  if (!calendar){
+    //     console.log("building calendar")
+    //     API.createCalendar(userId)
+    //     .then((res) => { console.log("res", res); console.log("res.data[0]", res.data[0]); setPlan(res.data[0]) })
+    //     .catch(err => console.log(err))
+    // }
         
-    }, [plan])
-//    console.log("plan", plan)
+    }, [])
+
+   console.log("plan1", plan)
+   console.log("plan1 calendar id", plan._id)
+
+    function getCalendar () {
+        // preloaded data
+        const calendarId = "60c42726807d563e28df18c7";
+        // new user calendar id
+        // const planId= plan._id
+        API.getCalendar(calendarId)
+        .then((res) => { console.log("res", res); 
+                           console.log("res.data[0]", res.data[0]); 
+                            setPlan(res.data[0])})
+        .catch(err => console.log(err));
+    }
+    
+    
+    getCalendar()
+   console.log("plan2", plan)
+
+
+
 //    console.log("plan.sunday", plan.sunday)
 //    console.log("plan.saturday", plan.saturday)
 //    console.log("plan.sunday.day", plan.sunday.day)

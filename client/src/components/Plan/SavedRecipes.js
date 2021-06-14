@@ -1,7 +1,7 @@
 import React from "react";
 
 function savedRecipeList(props){
-    let { ref, saveToPlan, delBtn, handleInput, viewIngredients} = props;
+    let {saveToPlan, delBtn, handleInput, viewIngredients} = props;
 return (
 <div className="p-1 m-1">
     <h5 className=" fw-normal">{props.label}</h5>
@@ -11,7 +11,7 @@ return (
             <div className="col-sx-4 sm-2">
               <img src={props.image} alt="recipe" ></img>
             </div>
-            <input placeholder="Which day to you want this?" id={props.id} label={props.label} url={props.url} image={props.image} ingredients={props.ingredients} onChange={e => handleInput(e.target.value)} ref={ref}></input>
+            <input placeholder="Which day to you want this?" id={props.id} onChange={event => handleInput(event)}></input>
         </div>
         <div>
             <button className="btn btn-outline-warning btn-sm .text-wrap"  id={props.id} label={props.label} url={props.url} image={props.image} ingredients={props.ingredients} onClick={(event) => saveToPlan(event)} name="add">Add to Plan</button>
