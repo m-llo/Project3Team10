@@ -7,7 +7,7 @@ import SavedRecipes from "../../components/Plan/SavedRecipes";
 import Modal from "../../components/Modal/Modal";
 // import StaticPlan from "../../components/Plan/StaticPlan"
 
-function Plan(props) {
+function Plan() {
     const location = useLocation();
     const userId = "60c42726807d563e28df18c7"
     let inputDay =""
