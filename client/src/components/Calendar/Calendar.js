@@ -6,17 +6,17 @@ import CalendarManagePrompt from "./CalendarManagePrompt"
 function Calendar () {
    const [plan, setPlan] = useState({})
     useEffect(()=> {
+       console.log("welcome")
         // const userId = "60c42726807d563e28df18c7"
-
     //    const calendarId = "60c42726807d563e28df18c7"
-      const userId = "60c664baac01b13e4c5d569b";
+    //   const userId = "60c664baac01b13e4c5d569b";
       
-      API.createCalendar()
-      .then((res) => { console.log("res", res); 
-                             console.log("res.data", res.data); 
-                             console.log("calendar id", res.data._id); 
-                             setPlan(res.data) })
-      .catch(err => console.log(err))
+    //   API.createCalendar()
+    //   .then((res) => { console.log("res", res); 
+    //                          console.log("res.data", res.data); 
+    //                          console.log("calendar id", res.data._id); 
+    //                          setPlan(res.data) })
+    //   .catch(err => console.log(err))
      
     //   API.getCalendar(userId)
     //     .then((res) => { console.log("res", res); console.log("res.data[0]", res.data[0]); setPlan(res.data[0])})
@@ -47,15 +47,9 @@ function Calendar () {
     }
     
     
-    getCalendar()
-   console.log("plan2", plan)
+//     getCalendar()
+//    console.log("plan2", plan)
 
-
-
-//    console.log("plan.sunday", plan.sunday)
-//    console.log("plan.saturday", plan.saturday)
-//    console.log("plan.sunday.day", plan.sunday.day)
-//    console.log("plan.saturday.day", plan.saturday.day)
     return (
         <div className="wrapper px-4">
             <div className="row justity-content-end">
