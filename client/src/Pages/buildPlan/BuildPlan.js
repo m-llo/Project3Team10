@@ -7,16 +7,11 @@ import SavedRecipes from "../../components/Plan/SavedRecipes";
 import Modal from "../../components/Modal/Modal";
 // import StaticPlan from "../../components/Plan/StaticPlan"
 
-function Plan() {
-    const location = useLocation();
-    const userId = "60c42726807d563e28df18c7"
-    let inputDay =""
-
-
 function Plan(props) {
     const location = useLocation();
     const inputRef = useRef()
-    const userId = "60bee00177427c19cc9e1e2f"
+    const userId = "60c42726807d563e28df18c7"
+    let inputDay =""
     const [plan, setPlan] = useState({})
     const [recipes, setRecipes] = useState([])
     const [recipeID, setRecipeID]=useState({})
@@ -61,20 +56,16 @@ function Plan(props) {
     
     console.log("plan state", plan);
 
-    if(plan.length > 0){
-        console.log("friday" , plan[0].friday.day)
-    }
-    
 
     function clearfromPlan (event){
         const calendarId = plan.id
         const deleteDay = event.target.getAttribute("day")
         const planId = calendarId
         const label = event.target.getAttribute("label")
-        API.clearFromCalendar({
-            id: planId,
-            day: deleteDay
-        })
+        API.clearFromCalendar(
+            planId,
+            deleteDay
+        )
             //    then refresh page which calls the calendar again and updates the state
             .then(res => {
                 console.log(label + "successfully removed");
@@ -86,9 +77,9 @@ function Plan(props) {
     function deleteFromFavs (event){
         const recipeId = event.target.getAttribute("id")
         const label = event.target.getAttribute("label")
-        API.deleteRecipe({
-            id: recipeId,
-        })
+        API.deleteRecipe(
+          recipeId,
+        )
             //    then refresh page which calls the calendar again and updates the state
             .then(res => {
                 console.log(label + "successfully removed");
@@ -101,9 +92,7 @@ function Plan(props) {
         inputDay = event.target.value  
         console.log("input day",inputDay)      
     }
-    const viewIngredients = event => {
-        console.log(event.target.id)
-    }
+ 
    
     const saveToPlan = event => {
         const image = event.target.getAttribute("image")
