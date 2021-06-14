@@ -10,25 +10,14 @@ function Calendar () {
         // const userId = "60c42726807d563e28df18c7"
     //    const calendarId = "60c42726807d563e28df18c7"
     //   const userId = "60c664baac01b13e4c5d569b";
-      
-    //   API.createCalendar()
-    //   .then((res) => { console.log("res", res); 
-    //                          console.log("res.data", res.data); 
-    //                          console.log("calendar id", res.data._id); 
-    //                          setPlan(res.data) })
-    //   .catch(err => console.log(err))
-     
-    //   API.getCalendar(userId)
-    //     .then((res) => { console.log("res", res); console.log("res.data[0]", res.data[0]); setPlan(res.data[0])})
-    //     .catch(err => console.log(err));
-     
-    //  if (!calendar){
-    //     console.log("building calendar")
-    //     API.createCalendar(userId)
-    //     .then((res) => { console.log("res", res); console.log("res.data[0]", res.data[0]); setPlan(res.data[0]) })
-    //     .catch(err => console.log(err))
-    // }
-        
+      let userId = sessionStorage.getItem("logged user")
+      console.log(userId)
+      API.createCalendar()
+      .then((res) => { console.log("res", res); 
+                             console.log("res.data", res.data); 
+                             console.log("calendar id", res.data._id); 
+                             setPlan(res.data) })
+      .catch(err => console.log(err))
     }, [])
 
    console.log("plan1", plan)
@@ -36,10 +25,10 @@ function Calendar () {
 
     function getCalendar () {
         // preloaded data
-        const calendarId = "60c42726807d563e28df18c7";
+        // const calendarId = "60c42726807d563e28df18c7";
         // new user calendar id
         // const planId= plan._id
-        API.getCalendar(calendarId)
+        API.getCalendar()
         .then((res) => { console.log("res", res); 
                            console.log("res.data[0]", res.data[0]); 
                             setPlan(res.data[0])})
@@ -47,8 +36,8 @@ function Calendar () {
     }
     
     
-//     getCalendar()
-//    console.log("plan2", plan)
+    getCalendar()
+   console.log("plan2", plan)
 
     return (
         <div className="wrapper px-4">

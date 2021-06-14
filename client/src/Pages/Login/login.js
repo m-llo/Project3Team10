@@ -33,6 +33,7 @@ export default function Login() {
      password,
   })
   .then(res =>{ 
+    sessionStorage.setItem("logged user", res.data._id)
     document.location.replace('/')
   })
   .catch(err => console.log(err))
