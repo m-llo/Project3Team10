@@ -9,7 +9,6 @@ import Modal from "../../components/Modal/Modal";
 
 function Plan(props) {
     const location = useLocation();
-    const inputRef = useRef()
     const userId = "60c42726807d563e28df18c7"
     let inputDay =""
     const [plan, setPlan] = useState({})
@@ -28,13 +27,7 @@ function Plan(props) {
             .then((res) => { console.log("res", res); console.log("res.data", res.data[0]); setPlan(res.data[0])})
 
             .catch(err => console.log(err));
-
-        if (!calendar){
-            console.log("building calendar")
-            API.createCalendar(userId)
-            .then((res) => { console.log("res", res); console.log("res.data", res.data); setPlan(res.data) })
-            .catch(err => console.log(err))
-        }
+            
         // API.getRecipesByUser(userId)
         // .then((res) => { setRecipes(res); console.log("recipes", recipes) })
         // .catch(err => console.log(err));
