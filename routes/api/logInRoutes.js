@@ -20,22 +20,22 @@ router.post('/login', async (req, res) => {
     console.log("valid password", validPassword)
     const userId = dbUserData.id
     console.log("id", userId)
-  
 
     if (!validPassword) {
+      
       res
         .status(400)
         .json({ message: 'Incorrect password. Please try again!' });
       return;
     }
+  
     console.log("after password verify id", userId)
     // Once the user successfully logs in, set up the sessions variable 'loggedIn'
     // req.session.save(() => {
     //     req.session.loggedIn = true;
     //     req.session.user_id=userId
        
-    //     res.status(200)
-    //     .json({ user: dbUserData, message: 'You are now logged in!' });
+    res.status(200).json(dbUserData);
     // });
   } catch (err) {
     console.log(err);
@@ -44,15 +44,17 @@ router.post('/login', async (req, res) => {
 });
 
 // Logout
-// router.post('/logout', (req, res) => {
-//   // When the user logs out, destroy the session
-//   if (req.session.loggedIn) {
-//     req.session.destroy(() => {
-//       res.status(204).end();
-//     });
-//   } else {
-//     res.status(404).end();
-//   }
-// });
+router.post('/logout', (req, res) => {
+  // When the user logs out, destroy the session
+  try{
+    req.session.destroy(() => {
+    res.status(204).end();
+  });
+}  catch (err) {
+  console.log(err);
+  res.status(500).json(err);
+}
+
+});
 
 module.exports = router;
