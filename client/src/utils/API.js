@@ -59,8 +59,12 @@ export default {
       day: day,
       recipeId:""});
   },
-  updateCalendar: function(id, calendar){
-      return axios.post("/api/calendar" + id, calendar)
+  updateCalendar: function(id, plan){
+      return axios.post("/api/calendar/" + id, {
+        label: plan.label,
+        url: plan.url,
+        image: plan.image,
+        ingredients: plan.ingredients})
   },
 
   createCalendar: function(userId){
