@@ -4,6 +4,7 @@ import API from "../../utils/API";
 import CalendarManagePrompt from "./CalendarManagePrompt"
 
 function Calendar () {
+    
    const [plan, setPlan] = useState({})
     useEffect(()=> {
        console.log("welcome")
@@ -12,32 +13,43 @@ function Calendar () {
     //   const userId = "60c664baac01b13e4c5d569b";
       let userId = sessionStorage.getItem("logged user")
       console.log(userId)
-      API.createCalendar()
+      
+     API.getCalendar(userId)
       .then((res) => { console.log("res", res); 
-                             console.log("res.data", res.data); 
-                             console.log("calendar id", res.data._id); 
-                             setPlan(res.data) })
-      .catch(err => console.log(err))
+                         console.log("res.data[0]", res.data[0]); 
+                          setPlan(res.data[0])})
+      .catch(err => console.log(err));
+
+    if(!plan._id){
+        console.log("building calendar")
+        API.createCalendar(userId)
+        .then((res) => { console.log("res", res); 
+                               console.log("res.data", res.data); 
+                               console.log("calendar id", res.data._id); 
+                               setPlan(res.data) })
+        .catch(err => console.log(err))
+    }
+    console.log("plan1", plan)
+    console.log("plan1 calendar id", plan._id)
     }, [])
 
-   console.log("plan1", plan)
-   console.log("plan1 calendar id", plan._id)
+   
 
-    function getCalendar () {
-        // preloaded data
-        // const calendarId = "60c42726807d563e28df18c7";
-        // new user calendar id
-        // const planId= plan._id
-        API.getCalendar()
-        .then((res) => { console.log("res", res); 
-                           console.log("res.data[0]", res.data[0]); 
-                            setPlan(res.data[0])})
-        .catch(err => console.log(err));
-    }
+//     function getCalendar () {
+//         // preloaded data
+//         // const calendarId = "60c42726807d563e28df18c7";
+//         // new user calendar id
+//         // const planId= plan._id
+//         API.getCalendar()
+//         .then((res) => { console.log("res", res); 
+//                            console.log("res.data[0]", res.data[0]); 
+//                             setPlan(res.data[0])})
+//         .catch(err => console.log(err));
+//     }
     
     
-    getCalendar()
-   console.log("plan2", plan)
+//     getCalendar()
+//    console.log("plan2", plan)
 
     return (
         <div className="wrapper px-4">

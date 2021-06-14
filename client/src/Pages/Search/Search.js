@@ -35,11 +35,14 @@ function Search() {
         // console.log(ingredients)
         const url = event.target.getAttribute("url")
         // console.log(url)
+        const userId = localStorage.getItem("logged user")
+
         API.saveRecipes ({
           label: label,
           image: image,
           ingredients: ingredients,
-          url: url
+          url: url,
+          userId: userId
         })
         .then(res => alert(label + " saved to Favorites"))
         .catch(err => console.log(err))

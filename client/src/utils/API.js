@@ -11,7 +11,7 @@ export default {
   },
 
   logIn: function(loginObj){
-    return axios.get("/api/user/login", loginObj)
+    return axios.post("/api/user/login", loginObj)
   },
 
   logOut: function (){

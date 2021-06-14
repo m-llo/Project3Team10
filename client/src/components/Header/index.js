@@ -2,9 +2,11 @@ import React from "react";
 import Logo from "../../assets/images/cÜk_long.png"
 
 const login = () => {
+    // localStorage.clear();
     window.location.href = '/login';
 }
 const logout = () => {
+    sessionStorage.clear();
     localStorage.clear();
     window.location.href = '/login';
 } 

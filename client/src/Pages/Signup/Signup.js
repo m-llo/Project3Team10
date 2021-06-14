@@ -32,6 +32,7 @@ export default function Signup() {
     password: password,
   })
   .then(res => {
+    localStorage.setItem("logged user", res.data._id)
     sessionStorage.setItem("logged user", res.data._id)
     document.location.replace('/')
   })

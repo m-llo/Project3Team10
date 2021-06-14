@@ -9,7 +9,7 @@ import Modal from "../../components/Modal/Modal";
 
 function Plan() {
     const location = useLocation();
-    let userId = sessionStorage.getItem("logged user")
+    // let userId = sessionStorage.getItem("logged user")
     // const userId = "60c42726807d563e28df18c7"
     let inputDay =""
     const [plan, setPlan] = useState({})
@@ -24,6 +24,8 @@ function Plan() {
     
 
     useEffect(() => {
+        let userId = localStorage.getItem("logged user")
+        console.log("userid from local ", userId)
         API.getCalendar(userId)
             .then((res) => { console.log("res", res); console.log("res.data", res.data[0]); setPlan(res.data[0])})
 
