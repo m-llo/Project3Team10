@@ -25,7 +25,7 @@ function Header() {
                 </a>
             </div>
             <div className="navbar-brand">
-               <button type="submit" className=" btn btn-warning text-center" onClick={login}>Log In</button>
+               <button type="submit" className="btn btn-warning text-center" onClick={login}>Log In</button>
             </div>
             <div className="navbar-brand">
                <button type="submit" className="btn btn-warning text-center " onClick={logout}>Log Out</button>
