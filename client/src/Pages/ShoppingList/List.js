@@ -1,18 +1,18 @@
 import React, {
-  // useState, 
+  useState, 
   useEffect} from "react";
 import API from "../../utils/API";
 import Hero from "../../components/Hero/index"
 import { Link, useLocation } from "react-router-dom";
-import IngredientList from "../../components/IngredientList";
+
 
 
 function ShoppingList() {
   const location = useLocation();
   let userPlan = []
   let ingredients =[]
-  // const [listItems, setListItems] = useState([])
-  let listItems = []
+  const [listItems, setListItems] = useState([])
+ 
   
     useEffect(() => {
       let userId = localStorage.getItem("logged user")
@@ -31,13 +31,17 @@ function ShoppingList() {
              console.log("userPlan ", userPlan)
              userPlan.map((day)=>ingredients.push(day.ingredients))
           console.log("ingredients ", ingredients)
-          console.log("called isolate function")
-            ingredients.map((recipe)=>{recipe.map((ingredient)=>{console.log("iso ing ", ingredient); listItems.push(ingredient)})})
-            console.log("listItems ", listItems)
+         
         })
           .catch(err => console.log(err));
 
   }, [])
+
+  function showList () {
+    console.log("called isolate function")
+    ingredients.map((recipe)=>{recipe.map((ingredient)=>{console.log("iso ing ", ingredient); setListItems(listItems =>[ingredient, ...listItems])})})
+    console.log("listItems ", listItems)
+  }
 
    
   return (
@@ -50,17 +54,24 @@ function ShoppingList() {
       <Hero />
          <div className="container">
              <div className="col-12">
-                <div className="text-center display-4">Ingredients:</div> 
-            
+             <div className="navbar-brand">
+               <button type="submit" className="btn btn-warning btn-lg text-center" onClick={showList}>Show My List</button>
+            </div>
+            <div className="text-center display-4 mb-5">My Shopping List:</div> 
+                   <div className="text-center display-6">
                   {
-                    listItems.length ? (
+                    listItems.length > 0 ? (
                          <ul>
-                           {listItems.map((item)=><IngredientList ingredients={item}/>)}
+                           {listItems.map(item =>{
+                           return(
+                           <li key={item.toString()} className="text-dark">{item}</li>
+                           )
+                          })}
                         </ul>                         
                        ): null
                          
                   }
-            
+                    </div>
                 </div>
            </div>       
     </div>
