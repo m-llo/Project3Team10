@@ -185,7 +185,7 @@ function Plan() {
             <h5 className="col-6 text-center display-6 mb-2">My Plan</h5>
             <h5 className="col-6 text-center display-6 mb-2">My Recipes</h5>
             <div className="navbar-brand">
-               <button type="submit" className="btn-warning text-center" onClick={savePlan}>Save Plan</button>
+               <button type="submit" className="btn btn-warning text-center" onClick={savePlan}>Save Plan</button>
             </div>
             </div>
             <div className=" row wrapper">
