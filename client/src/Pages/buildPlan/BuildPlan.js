@@ -27,7 +27,10 @@ function Plan() {
         let userId = localStorage.getItem("logged user")
         console.log("userid from local ", userId)
         API.getCalendar(userId)
-            .then((res) => { console.log("res", res); console.log("res.data", res.data[0]); setPlan(res.data[0])})
+            .then((res) => { console.log("res", res); console.log("res.data", res.data[0]);
+            localStorage.setItem("calendar ID", res.data[0]._id)
+              sessionStorage.setItem("calendar ID", res.data[0]._id)
+             setPlan(res.data[0])})
 
             .catch(err => console.log(err));
             
@@ -114,18 +117,36 @@ function Plan() {
 
         console.log("new plan ", plan)
       
+        // API.updateCalendar(
+        //     planId,
+        //     plan
+        // )
+        //     //    then refresh page which calls the calendar again and updates the state
+        // .then(res => {
+        //     console.log(label + " successfully added");
+        //     alert(label + " successfully added")
+        //     //    window.location.reload()
+        // })
+        // .catch(err => console.log(err))
+    }
+    
+    function savePlan () {
+        console.log("saving meal plan")
+        console.log("plan being saved", plan)
+        let planId = localStorage.getItem("calendar ID")
         API.updateCalendar(
             planId,
             plan
         )
             //    then refresh page which calls the calendar again and updates the state
         .then(res => {
-            console.log(label + " successfully added");
-            alert(label + " successfully added")
+            alert("meal plan successfully saved")
             //    window.location.reload()
         })
         .catch(err => console.log(err))
     }
+
+
 
     const viewIngredients = event => {
         let idOfRecipe = event.target.getAttribute("data-id");
@@ -163,6 +184,9 @@ function Plan() {
             <div className="row">
             <h5 className="col-6 text-center display-6 mb-2">My Plan</h5>
             <h5 className="col-6 text-center display-6 mb-2">My Recipes</h5>
+            <div className="navbar-brand">
+               <button type="submit" className="btn btn-warning text-center" onClick={savePlan}>Save Plan</button>
+            </div>
             </div>
             <div className=" row wrapper">
                {
