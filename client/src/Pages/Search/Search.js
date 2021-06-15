@@ -71,7 +71,7 @@ function Search() {
                     type="text"
                     placeholder="Type in a Cuisine Type or Main Ingredient"
                 />
-                <button type="success" onClick={handleFormSubmit} className="btn-lg btn-warning">
+                <button type="success" onClick={handleFormSubmit} className="btn btn-warning">
                     Search
                 </button>
             </div>
