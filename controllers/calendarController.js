@@ -13,9 +13,15 @@ module.exports = {
       .catch(err => res.json(err));
   },
   update: function(req, res) {
+    console.log("req.body", req.body);
     db.Calendar.findOneAndUpdate({ _id: req.params.id}, req.body , {new: true})
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.json(err));
+      .then(dbModel =>{
+        // console.log("hit calendar update", dbModel);
+        res.json(dbModel)} )
+      .catch(err =>{
+        console.log("calendar update error", err); 
+      res.json(err)
+    });
   },
   remove: function(req, res) {
     db.Calendar.findOneAndDelete({ _id: req.params.id })
