@@ -27,12 +27,13 @@ it will generate a shopping list that I can email to myself to use at the store.
 ## Usage
       
 * Application Video:
-
-[Video Link](https://drive.google.com/file/d/1Lhdr2b1wNJMRvWdqeuWqNfzbUWazgiYw/view)
+[Heroku Link](https://drive.google.com/file/d/1CkWWaJdZzcl-k63pWN8wcjnJ2gXtYTxd/preview)
       
 * Screenshots:
-
 ![alt text](https://user-images.githubusercontent.com/75397309/121980064-ee0f7400-cd50-11eb-916b-b1ea173d6621.png)
+![alt text](https://user-images.githubusercontent.com/74076318/122141550-2f685800-ce13-11eb-9aeb-09b5c3ddb2fd.png)
+![alt text](https://user-images.githubusercontent.com/74076318/122141511-1bbcf180-ce13-11eb-8789-ed5e60ae8553.png)
+![alt text](https://user-images.githubusercontent.com/74076318/122141490-0e076c00-ce13-11eb-8942-7a97d7d8327a.png)
 
 ## Installation
       
